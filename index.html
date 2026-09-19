@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jagan's Artfolio — Professional Artist Portfolio</title>
+  <meta name="description" content="Professional artist portfolio — paintings, prints, photographs, and mixed media by Jagan. Follow @jagans_artfolio on Instagram for daily process and works in progress.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/instagram.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0a0a'/><circle cx='50' cy='50' r='20' fill='none' stroke='%23d4b87a' stroke-width='3'/></svg>">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#top" class="header-logo">
+      <span class="header-logo-mark">J</span>
+      Jagan's Artfolio
+    </a>
+    <nav class="header-nav">
+      <a href="#top" class="header-nav-link active">Home</a>
+      <a href="#works" class="header-nav-link">Works</a>
+      <a href="#about" class="header-nav-link">About</a>
+      <a href="#connect" class="header-nav-link">Connect</a>
+    </nav>
+    <div class="header-actions">
+      <a href="admin.html" class="btn btn-ghost">Admin</a>
+      <button class="btn-icon" id="menu-toggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <nav class="mobile-menu" id="mobile-menu" hidden>
+    <a href="#top" class="mobile-menu-link">Home</a>
+    <a href="#works" class="mobile-menu-link">Works</a>
+    <a href="#about" class="mobile-menu-link">About</a>
+    <a href="#connect" class="mobile-menu-link">Connect</a>
+    <a href="admin.html" class="mobile-menu-link">Admin</a>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-bg"></div>
+      <div class="hero-content container">
+        <span class="hero-label">Professional Artist</span>
+        <h1 class="hero-title">Jagan</h1>
+        <p class="hero-subtitle">
+          A multidisciplinary artist working across painting, digital media, photography, and mixed media. Each medium informs the others — the discipline of one feeds the freedom of another.
+        </p>
+        <div class="hero-actions">
+          <a href="#works" class="btn btn-primary">View the Work</a>
+          <a href="#about" class="btn btn-outline">About the Artist</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-number" id="hero-works">—</div>
+            <div class="hero-stat-label">Artworks</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number" id="hero-mediums">—</div>
+            <div class="hero-stat-label">Mediums</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number" id="hero-ig">—</div>
+            <div class="hero-stat-label">IG Posts</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section class="section" id="works">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Portfolio</div>
+          <h2 class="section-title">The Collection</h2>
+          <p class="section-description">A curated set of artworks across different mediums. Click any piece to see it larger.</p>
+        </div>
+
+        <div class="filter-bar" id="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid"></div>
+
+        <div class="empty-state" id="gallery-empty" hidden>
+          <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
+          </svg>
+          <p>No works yet. Add some in the <a href="admin.html">admin panel</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">About</div>
+          <h2 class="section-title">The Artist</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-content">
+            <p>
+              I make things across a few different mediums — oil on canvas, digital prints, photographs, and mixed media work. The medium changes, but the practice is the same: looking closely, making slowly, and leaving room for accident.
+            </p>
+            <p>
+              This artfolio is the canonical collection — each work here has a place, a date, and a note about how it came to be. It's not a feed; it's a record. For daily process and works in progress, I post on Instagram.
+            </p>
+            <p>
+              I work alone, in a small studio, and I show my work when it feels ready — not on a schedule. This site is updated as the work accumulates.
+            </p>
+            <div class="about-details">
+              <div>
+                <div class="about-detail-label">Mediums</div>
+                <div class="about-detail-value" id="about-mediums-list">—</div>
+              </div>
+              <div>
+                <div class="about-detail-label">Instagram</div>
+                <div class="about-detail-value">
+                  <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">@jagans_artfolio</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <div class="about-image-frame">
+              <div class="about-image-placeholder">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="50" cy="40" r="22" stroke-dasharray="4 4"/>
+                  <path d="M20 85 C20 60, 35 55, 50 55 C65 55, 80 60, 80 85" stroke-dasharray="4 4"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram -->
+    <section class="ig-section" id="connect">
+      <div class="container">
+        <div class="ig-header">
+          <div class="ig-header-left">
+            <div class="ig-avatar">J</div>
+            <div class="ig-user-info">
+              <h3>@jagans_artfolio</h3>
+              <p>Works in progress &amp; daily practice</p>
+            </div>
+          </div>
+          <div class="ig-live" id="ig-live">
+            <span class="ig-live-dot"></span>
+            <span id="ig-live-text">Live</span>
+          </div>
+        </div>
+
+        <div id="ig-state">
+          <div class="loading" id="ig-loading">
+            <div class="loading-spinner"></div>
+            <p>Loading feed…</p>
+          </div>
+          <div id="ig-feed" hidden>
+            <div class="ig-grid" id="ig-grid"></div>
+            <div class="ig-footer">
+              <p>New posts appear automatically. <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">View full profile →</a></p>
+            </div>
+          </div>
+          <div class="empty-state" id="ig-empty" hidden>
+            <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <p>No posts on the profile yet.</p>
+          </div>
+          <div class="empty-state" id="ig-not-connected">
+            <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <p>Instagram feed not connected. <a href="admin.html">Connect in admin →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="header-logo-mark">J</span>
+          Jagan's Artfolio
+        </div>
+        <div class="footer-links">
+          <a href="#top">Home</a>
+          <a href="#works">Works</a>
+          <a href="#about">About</a>
+          <a href="admin.html">Admin</a>
+        </div>
+        <div class="footer-copy">© Jagan — All works copyrighted to the artist</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <img class="lightbox-image" id="lightbox-image" src="" alt="">
+      <div class="lightbox-meta">
+        <h3 class="lightbox-title" id="lightbox-title"></h3>
+        <div class="lightbox-details" id="lightbox-details"></div>
+        <p class="lightbox-description" id="lightbox-description"></p>
+      </div>
+    </div>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+  <!-- IG Preview -->
+  <div class="ig-preview" id="ig-preview" hidden>
+    <button class="ig-preview-close" id="ig-preview-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <button class="ig-preview-nav ig-preview-prev" id="ig-preview-prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button class="ig-preview-nav ig-preview-next" id="ig-preview-next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+    <div class="ig-preview-content">
+      <img class="ig-preview-image" id="ig-preview-image" src="" alt="">
+      <div class="ig-preview-meta">
+        <div class="ig-preview-username">From <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">@jagans_artfolio</a></div>
+        <p class="ig-preview-caption" id="ig-preview-caption"></p>
+        <div class="ig-preview-timestamp" id="ig-preview-timestamp"></div>
+      </div>
+    </div>
+    <div class="ig-preview-counter" id="ig-preview-counter"></div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/instagram.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
