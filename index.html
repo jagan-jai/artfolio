@@ -133,30 +133,20 @@
             <p>Syncing from @jagans_artfolio</p>
         </div>
 
-        <!-- This is where your live Instagram content will go -->
-        <div class="insta-feed-wrapper" id="behold-gal">
-            
-            <!-- Placeholder items (will be replaced by Behold) -->
-            <div class="art-item">
-                <img src="https://via.placeholder.com/600x700/1a1a1a/c19a6b?text=Loading+Latest+Art..." alt="Artwork">
-                <div class="art-caption">
-                    <h4>Original Artwork</h4>
-                    <p>Captions will pull directly from your Instagram post description here...</p>
-                    <a href="#" class="btn-gold">INQUIRE ABOUT THIS PIECE</a>
-                </div>
-            </div>
-
-            <div class="art-item">
-                <img src="https://via.placeholder.com/600x700/1a1a1a/c19a6b?text=Loading+Latest+Art..." alt="Artwork">
-                <div class="art-caption">
-                    <h4>Commissioned Piece</h4>
-                    <p>The details of your pencil strokes and digital blending as described on IG.</p>
-                    <a href="#" class="btn-gold">BOOK A COMMISSION</a>
-                </div>
-            </div>
-
+        <!-- Live Instagram Feed via Behold -->
+        <div class="insta-feed-wrapper">
+            <behold-widget feed-id="qLxGmCyeRwTJ7WrQZXwu"></behold-widget>
         </div>
     </section>
+
+    <!-- Behold Widget Script -->
+    <script>
+      (() => {
+        if(window.__bhldScript)return;window.__bhldScript=true;
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
+      })();
+    </script>
 
     <footer>
         <p style="margin-bottom: 20px; letter-spacing: 2px;">JAGAN'S ARTFOLIO &copy; 2026</p>
