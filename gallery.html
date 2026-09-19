@@ -220,6 +220,132 @@
             color: var(--text-secondary);
         }
 
+        /* ===== Lightbox ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        .lightbox-close:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .lightbox-close svg { width: 20px; height: 20px; }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        .lightbox-nav:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        .lightbox-nav svg { width: 20px; height: 20px; }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: var(--radius);
+        }
+        .lightbox-meta {
+            text-align: center;
+            max-width: 500px;
+        }
+        .lightbox-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .lightbox-medium {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .medium-nav {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .medium-nav-btn {
+            padding: 6px 12px;
+            font-size: 0.65rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .medium-nav-btn:hover,
+        .medium-nav-btn.active {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
         /* Footer */
         .footer {
             padding: 48px 0;
@@ -260,6 +386,8 @@
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 12px;
             }
+            .medium-nav { display: none; }
+            .lightbox-nav { display: none; }
         }
         @media (max-width: 600px) {
             .nav { padding: 0 16px; height: 60px; }
@@ -272,6 +400,7 @@
                 padding: 6px 14px;
                 font-size: 0.7rem;
             }
+            .lightbox-content { max-width: 95vw; }
         }
     </style>
 </head>
@@ -328,6 +457,36 @@
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+        </button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+            </svg>
+        </button>
+
+        <div class="medium-nav" id="medium-nav"></div>
+
+        <div class="lightbox-content">
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <div class="lightbox-meta">
+                <h3 class="lightbox-title" id="lightbox-title"></h3>
+                <span class="lightbox-medium" id="lightbox-medium"></span>
+            </div>
+        </div>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
 
     <script>
         const ARTWORKS_DATA = {
@@ -560,10 +719,184 @@
             ]
         };
 
+        // Flatten all artworks into a single array for lightbox navigation
+        let allArtworks = [];
+        let currentFilter = 'all';
+
+        function flattenArtworks(filter) {
+            const items = [];
+            const mediums = filter === 'all' ? Object.keys(ARTWORKS_DATA) : [filter];
+            mediums.forEach(medium => {
+                ARTWORKS_DATA[medium].forEach(item => {
+                    items.push({
+                        ...item,
+                        medium: medium
+                    });
+                });
+            });
+            return items;
+        }
+
+        // Lightbox state
+        let lightboxOpen = false;
+        let currentIndex = 0;
+        let currentMediumIndex = 0;
+
+        // DOM elements
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxMedium = document.getElementById('lightbox-medium');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const mediumNav = document.getElementById('medium-nav');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxOpen = true;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            renderLightbox();
+            renderMediumNav();
+        }
+
+        function closeLightbox() {
+            lightboxOpen = false;
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function renderLightbox() {
+            const items = flattenArtworks(currentFilter);
+            const item = items[currentIndex];
+            if (!item) return;
+
+            lightboxImage.src = `assets/artworks/${item.file}`;
+            lightboxTitle.textContent = item.caption;
+            lightboxMedium.textContent = item.medium;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${items.length}`;
+        }
+
+        function renderMediumNav() {
+            const mediums = Object.keys(ARTWORKS_DATA);
+            mediumNav.innerHTML = '';
+            mediums.forEach((medium, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'medium-nav-btn' + (idx === currentMediumIndex ? ' active' : '');
+                btn.textContent = medium;
+                btn.addEventListener('click', () => {
+                    currentMediumIndex = idx;
+                    // Jump to first item of this medium
+                    const items = flattenArtworks(currentFilter);
+                    const firstIdx = items.findIndex(i => i.medium === medium);
+                    if (firstIdx >= 0) {
+                        currentIndex = firstIdx;
+                        renderLightbox();
+                        renderMediumNav();
+                    }
+                });
+                mediumNav.appendChild(btn);
+            });
+        }
+
+        function nextImage() {
+            const items = flattenArtworks(currentFilter);
+            currentIndex = (currentIndex + 1) % items.length;
+            renderLightbox();
+        }
+
+        function prevImage() {
+            const items = flattenArtworks(currentFilter);
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            renderLightbox();
+        }
+
+        function nextMedium() {
+            const mediums = Object.keys(ARTWORKS_DATA);
+            currentMediumIndex = (currentMediumIndex + 1) % mediums.length;
+            const items = flattenArtworks(currentFilter);
+            const medium = mediums[currentMediumIndex];
+            const firstIdx = items.findIndex(i => i.medium === medium);
+            if (firstIdx >= 0) {
+                currentIndex = firstIdx;
+                renderLightbox();
+                renderMediumNav();
+            }
+        }
+
+        function prevMedium() {
+            const mediums = Object.keys(ARTWORKS_DATA);
+            currentMediumIndex = (currentMediumIndex - 1 + mediums.length) % mediums.length;
+            const items = flattenArtworks(currentFilter);
+            const medium = mediums[currentMediumIndex];
+            const firstIdx = items.findIndex(i => i.medium === medium);
+            if (firstIdx >= 0) {
+                currentIndex = firstIdx;
+                renderLightbox();
+                renderMediumNav();
+            }
+        }
+
+        // Touch handling
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            const threshold = 50;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                // Horizontal swipe
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0) nextImage();
+                    else prevImage();
+                }
+            } else {
+                // Vertical swipe
+                if (Math.abs(diffY) > threshold) {
+                    if (diffY > 0) nextMedium();
+                    else prevMedium();
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightboxOpen) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowUp') prevMedium();
+            if (e.key === 'ArrowDown') nextMedium();
+        });
+
+        // Button handlers
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-prev').addEventListener('click', prevImage);
+        document.getElementById('lightbox-next').addEventListener('click', nextImage);
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Gallery rendering
         const galleryContent = document.getElementById('gallery-content');
         const filterBar = document.getElementById('filter-bar');
 
-        // Build filter buttons
         Object.keys(ARTWORKS_DATA).forEach(medium => {
             const btn = document.createElement('button');
             btn.className = 'filter-btn';
@@ -574,12 +907,13 @@
 
         function renderGallery(filter) {
             galleryContent.innerHTML = '';
-            
+            currentFilter = filter;
+
             const mediums = filter === 'all' ? Object.keys(ARTWORKS_DATA) : [filter];
-            
+
             mediums.forEach(medium => {
                 const items = ARTWORKS_DATA[medium];
-                
+
                 const section = document.createElement('div');
                 section.className = 'medium-section';
                 section.innerHTML = `
@@ -588,8 +922,8 @@
                         <span class="medium-count">${items.length} artwork${items.length !== 1 ? 's' : ''}</span>
                     </div>
                     <div class="gallery-grid">
-                        ${items.map(item => `
-                            <article class="gallery-item">
+                        ${items.map((item, i) => `
+                            <article class="gallery-item" data-medium="${medium}" data-index="${i}">
                                 <img class="gallery-item-image" src="assets/artworks/${item.file}" alt="${item.caption}" loading="lazy">
                                 <div class="gallery-item-overlay">
                                     <div class="gallery-item-title">${item.caption}</div>
@@ -601,6 +935,21 @@
                 `;
                 galleryContent.appendChild(section);
             });
+
+            // Wire up clicks
+            galleryContent.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const medium = item.dataset.medium;
+                    const idx = parseInt(item.dataset.index);
+                    const items = flattenArtworks(filter);
+                    // Find the correct global index
+                    const globalIdx = items.findIndex(i => i.medium === medium && i.caption === ARTWORKS_DATA[medium][idx].caption);
+                    if (globalIdx >= 0) {
+                        currentMediumIndex = Object.keys(ARTWORKS_DATA).indexOf(medium);
+                        openLightbox(globalIdx);
+                    }
+                });
+            });
         }
 
         // Initial render
@@ -609,10 +958,10 @@
         // Filter click handlers
         filterBar.addEventListener('click', (e) => {
             if (!e.target.classList.contains('filter-btn')) return;
-            
+
             filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
-            
+
             renderGallery(e.target.dataset.filter);
         });
     </script>
