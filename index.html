@@ -676,6 +676,65 @@
             text-align: center;
         }
 
+        /* ===== About ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image-frame {
+            width: 100%;
+            max-width: 320px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .about-image-frame img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .about-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .about-text p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .about-text p:first-child {
+            font-size: 1.1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
         /* ===== Footer ===== */
         .footer {
             padding: 48px 0;
@@ -740,6 +799,16 @@
                 grid-column: span 2;
                 grid-row: span 1;
             }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-image {
+                order: -1;
+            }
+            .about-image-frame {
+                max-width: 240px;
+            }
             .commission-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -762,6 +831,8 @@
             .gallery-item.featured { grid-column: span 1; }
             .gallery-item:nth-child(7n + 3) { grid-column: span 1; }
             .gallery-item:nth-child(5n + 4) { grid-row: span 1; }
+            .about-text p { font-size: 0.9rem; }
+            .about-text p:first-child { font-size: 1rem; }
             .commission-form { padding: 24px; }
             .container { padding: 0 16px; }
             .footer-content {
@@ -795,6 +866,7 @@
                 JagansArtfolio
             </a>
             <div class="nav-links" id="nav-links">
+                <a href="#about" class="nav-link">About</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="#shop" class="nav-link">Shop</a>
                 <a href="#commission" class="nav-link">Commission</a>
@@ -840,6 +912,44 @@
                     <div class="hero-stat">
                         <div class="hero-stat-number">100+</div>
                         <div class="hero-stat-label">Collectors</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="section section-dark" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="about-image-frame">
+                            <img src="https://picsum.photos/seed/artist/600/700" alt="Jagan S — Artist">
+                        </div>
+                    </div>
+                    <div class="about-content">
+                        <div class="section-label">About the Artist</div>
+                        <h2 class="section-title">Jagan S</h2>
+                        <p class="about-subtitle">Biotechnology graduate. Healthcare strategist. Self-taught artist.</p>
+                        <div class="about-text">
+                            <p>
+                                I studied biotechnology. I practice art. The two are not as separate as they sound.
+                            </p>
+                            <p>
+                                Growing up in Bangalore, I was the student who filled margins with doodles — characters, faces, shapes flowing from pencil to paper without much thought. It was instinct. Even through my biotechnology degree, art remained the constant I returned to between lectures and lab work.
+                            </p>
+                            <p>
+                                Today I work in healthcare marketing strategy. I also paint, draw, and create — not as a hobby, but as a parallel practice. Graphite and charcoal. Oil and acrylic. Watercolor and soft pastel. Mixed media. I am currently exploring sculpture and modelling. Each medium teaches something the others cannot, and I let the idea dictate the material.
+                            </p>
+                            <p>
+                                Realism is where I begin — portraits, birds, animals, the natural world. But I make room for exploration too. Growth lives outside the comfort zone, and I try to visit often.
+                            </p>
+                            <p>
+                                My work has been exhibited at national-level exhibitions. I have completed commissioned pieces for clients across the globe, handling everything from concept and creation to careful packaging and international delivery. Every original is signed and accompanied by a certificate of authenticity.
+                            </p>
+                            <p>
+                                I believe discipline and creativity are not opposites. They are partners. One shows up on schedule. The other surprises you. Together, they make the work possible.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
