@@ -1,279 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jagan's Artfolio — Professional Artist Portfolio</title>
-  <meta name="description" content="Professional artist portfolio — paintings, prints, photographs, and mixed media by Jagan. Follow @jagans_artfolio on Instagram for daily process and works in progress.">
-  <meta name="theme-color" content="#0a0a0a">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/gallery.css">
-  <link rel="stylesheet" href="css/instagram.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0a0a'/><circle cx='50' cy='50' r='20' fill='none' stroke='%23d4b87a' stroke-width='3'/></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jagansartfolio | Fine Art & Commissions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --accent-color: #d4af37;
+            --text-color: #ffffff;
+            --secondary-text: #a0a0a0;
+            --card-bg: #161616;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+        .logo { font-size: 1.3rem; font-weight: 800; letter-spacing: 3px; color: var(--accent-color); text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { color: var(--text-color); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* Hero Section */
+        .hero {
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: -1px; }
+        .hero p { font-size: 1.1rem; color: var(--secondary-text); margin-bottom: 2.5rem; max-width: 500px; }
+        .cta-btn { padding: 1rem 2.5rem; background: var(--accent-color); color: #000; text-decoration: none; font-weight: 700; border-radius: 50px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+        .cta-btn:hover { transform: scale(1.05); background: #fff; }
+
+        /* Sections */
+        .section { padding: 5rem 5%; }
+        .section-title { font-size: 2rem; margin-bottom: 3rem; text-align: center; border-bottom: 1px solid #333; padding-bottom: 1rem; font-family: 'Playfair Display', serif; font-weight: 400; }
+
+        /* Instagram Grid */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .insta-placeholder {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .insta-placeholder img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .insta-placeholder:hover img { opacity: 1; transform: scale(1.05); }
+
+        /* Shop Grid */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .art-card { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
+        .art-card:hover { border-color: var(--accent-color); transform: translateY(-4px); }
+        .art-card img { width: 100%; border-radius: 6px; margin-bottom: 1rem; aspect-ratio: 4/3; object-fit: cover; }
+        .art-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; }
+        .art-card .price { color: var(--accent-color); font-weight: 700; display: block; margin-bottom: 1rem; font-size: 1rem; }
+        .buy-btn { width: 100%; padding: 0.8rem; background: none; border: 1px solid var(--accent-color); color: var(--accent-color); cursor: pointer; transition: 0.3s; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; border-radius: 6px; }
+        .buy-btn:hover { background: var(--accent-color); color: #000; }
+
+        /* Commission Form */
+        .commission-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid #222;
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--secondary-text); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent-color); }
+        .submit-btn { width: 100%; padding: 1rem; background: var(--accent-color); border: none; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; border-radius: 8px; transition: 0.3s; }
+        .submit-btn:hover { background: #fff; }
+
+        footer { text-align: center; padding: 3rem; border-top: 1px solid #222; color: var(--secondary-text); font-size: 0.8rem; }
+        footer p + p { margin-top: 10px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { height: 70vh; }
+            .section { padding: 3rem 5%; }
+            .commission-container { padding: 2rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <a href="#top" class="header-logo">
-      <img src="assets/logo.svg" alt="Jagan's Artfolio" class="header-logo-img">
-    </a>
-    <nav class="header-nav">
-      <a href="#top" class="header-nav-link active">Home</a>
-      <a href="#works" class="header-nav-link">Works</a>
-      <a href="#about" class="header-nav-link">About</a>
-      <a href="#connect" class="header-nav-link">Connect</a>
+    <nav>
+        <div class="logo">JagansArtfolio</div>
+        <div class="nav-links">
+            <a href="#work">Portfolio</a>
+            <a href="#shop">Shop</a>
+            <a href="#commission">Commission</a>
+            <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        </div>
     </nav>
-    <div class="header-actions">
-      <a href="admin.html" class="btn btn-ghost">Admin</a>
-      <button class="btn-icon" id="menu-toggle" aria-label="Menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </header>
 
-  <!-- Mobile menu -->
-  <nav class="mobile-menu" id="mobile-menu" hidden>
-    <a href="#top" class="mobile-menu-link">Home</a>
-    <a href="#works" class="mobile-menu-link">Works</a>
-    <a href="#about" class="mobile-menu-link">About</a>
-    <a href="#connect" class="mobile-menu-link">Connect</a>
-    <a href="admin.html" class="mobile-menu-link">Admin</a>
-  </nav>
+    <header class="hero">
+        <h1>Visions in Ink & Digital</h1>
+        <p>Exploring the boundary between imagination and reality through multidisciplinary art.</p>
+        <a href="#shop" class="cta-btn">View Original Art</a>
+    </header>
 
-  <main>
-
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="hero-bg"></div>
-      <div class="hero-content container">
-        <span class="hero-label">Professional Artist</span>
-        <h1 class="hero-title">Jagan</h1>
-        <p class="hero-subtitle">
-          A multidisciplinary artist working across painting, digital media, photography, and mixed media. Each medium informs the others — the discipline of one feeds the freedom of another.
-        </p>
-        <div class="hero-actions">
-          <a href="#works" class="btn btn-primary">View the Work</a>
-          <a href="#about" class="btn btn-outline">About the Artist</a>
+    <!-- PORTFOLIO / INSTAGRAM -->
+    <section class="section" id="work">
+        <h2 class="section-title">Latest Work</h2>
+        <div class="instagram-grid">
+            <div class="insta-placeholder"><img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=500" alt="Art"></div>
+            <div class="insta-placeholder"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=500" alt="Art"></div>
+            <div class="insta-placeholder"><img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=500" alt="Art"></div>
+            <div class="insta-placeholder"><img src="https://images.unsplash.com/photo-1576770141394-4361099238e8?w=500" alt="Art"></div>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-number" id="hero-works">—</div>
-            <div class="hero-stat-label">Artworks</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-number" id="hero-mediums">—</div>
-            <div class="hero-stat-label">Mediums</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-number" id="hero-ig">—</div>
-            <div class="hero-stat-label">IG Posts</div>
-          </div>
-        </div>
-      </div>
+        <p style="text-align:center; margin-top: 2rem; color: var(--secondary-text);">Follow <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener" style="color: var(--accent-color);">@jagans_artfolio</a> for daily updates</p>
     </section>
 
-    <!-- Works -->
-    <section class="section" id="works">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Portfolio</div>
-          <h2 class="section-title">The Collection</h2>
-          <p class="section-description">A curated set of artworks across different mediums. Click any piece to see it larger.</p>
+    <!-- SHOP -->
+    <section class="section" id="shop" style="background: #0f0f0f;">
+        <h2 class="section-title">Available Artworks</h2>
+        <div class="shop-grid">
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400" alt="Artwork">
+                <h3>Midnight Serenity</h3>
+                <span class="price">$450.00 (Original)</span>
+                <button class="buy-btn">Purchase Original</button>
+            </div>
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=400" alt="Artwork">
+                <h3>Digital Dreams Print</h3>
+                <span class="price">$45.00 (Limited Print)</span>
+                <button class="buy-btn">Order Print</button>
+            </div>
         </div>
-
-        <div class="filter-bar" id="filter-bar">
-          <button class="filter-btn active" data-filter="all">All</button>
-        </div>
-
-        <div class="gallery-grid" id="gallery-grid"></div>
-
-        <div class="empty-state" id="gallery-empty" hidden>
-          <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
-          </svg>
-          <p>No works yet. Add some in the <a href="admin.html">admin panel</a>.</p>
-        </div>
-      </div>
     </section>
 
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">About</div>
-          <h2 class="section-title">The Artist</h2>
-        </div>
-        <div class="about-grid">
-          <div class="about-content">
-            <p>
-              I make things across a few different mediums — oil on canvas, digital prints, photographs, and mixed media work. The medium changes, but the practice is the same: looking closely, making slowly, and leaving room for accident.
-            </p>
-            <p>
-              This artfolio is the canonical collection — each work here has a place, a date, and a note about how it came to be. It's not a feed; it's a record. For daily process and works in progress, I post on Instagram.
-            </p>
-            <p>
-              I work alone, in a small studio, and I show my work when it feels ready — not on a schedule. This site is updated as the work accumulates.
-            </p>
-            <div class="about-details">
-              <div>
-                <div class="about-detail-label">Mediums</div>
-                <div class="about-detail-value" id="about-mediums-list">—</div>
-              </div>
-              <div>
-                <div class="about-detail-label">Instagram</div>
-                <div class="about-detail-value">
-                  <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">@jagans_artfolio</a>
+    <!-- COMMISSION -->
+    <section class="section" id="commission">
+        <h2 class="section-title">Get a Custom Piece</h2>
+        <div class="commission-container">
+            <form>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Your Name">
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="about-image">
-            <div class="about-image-frame">
-              <div class="about-image-placeholder">
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="50" cy="40" r="22" stroke-dasharray="4 4"/>
-                  <path d="M20 85 C20 60, 35 55, 50 55 C65 55, 80 60, 80 85" stroke-dasharray="4 4"/>
-                </svg>
-              </div>
-            </div>
-          </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Commission Type</label>
+                    <select>
+                        <option>Digital Portrait</option>
+                        <option>Canvas Painting (Physical)</option>
+                        <option>Character Design</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Project Details</label>
+                    <textarea rows="5" placeholder="Describe your vision, size, and deadline..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Request</button>
+            </form>
         </div>
-      </div>
     </section>
 
-    <!-- Instagram -->
-    <section class="ig-section" id="connect">
-      <div class="container">
-        <div class="ig-header">
-          <div class="ig-header-left">
-            <div class="ig-avatar">J</div>
-            <div class="ig-user-info">
-              <h3>@jagans_artfolio</h3>
-              <p>Works in progress &amp; daily practice</p>
-            </div>
-          </div>
-          <div class="ig-live" id="ig-live">
-            <span class="ig-live-dot"></span>
-            <span id="ig-live-text">Live</span>
-          </div>
-        </div>
+    <footer>
+        <p>&copy; 2026 JagansArtfolio. All Rights Reserved.</p>
+        <p>Professional Artist — Bangalore, India</p>
+    </footer>
 
-        <div id="ig-state">
-          <div class="loading" id="ig-loading">
-            <div class="loading-spinner"></div>
-            <p>Loading feed…</p>
-          </div>
-          <div id="ig-feed" hidden>
-            <div class="ig-grid" id="ig-grid"></div>
-            <div class="ig-footer">
-              <p>New posts appear automatically. <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">View full profile →</a></p>
-            </div>
-          </div>
-          <div class="empty-state" id="ig-empty" hidden>
-            <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="5"/>
-              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-            </svg>
-            <p>No posts on the profile yet.</p>
-          </div>
-          <div class="empty-state" id="ig-not-connected">
-            <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="5"/>
-              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-            </svg>
-            <p>Instagram feed not connected. <a href="admin.html">Connect in admin →</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <img src="assets/logo.svg" alt="Jagan's Artfolio" class="footer-logo">
-        </div>
-        <div class="footer-links">
-          <a href="#top">Home</a>
-          <a href="#works">Works</a>
-          <a href="#about">About</a>
-          <a href="admin.html">Admin</a>
-        </div>
-        <div class="footer-copy">© Jagan — All works copyrighted to the artist</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" hidden>
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 6 6 18M6 6l12 12"/>
-      </svg>
-    </button>
-    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M15 18l-6-6 6-6"/>
-      </svg>
-    </button>
-    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M9 18l6-6-6-6"/>
-      </svg>
-    </button>
-    <div class="lightbox-content">
-      <img class="lightbox-image" id="lightbox-image" src="" alt="">
-      <div class="lightbox-meta">
-        <h3 class="lightbox-title" id="lightbox-title"></h3>
-        <div class="lightbox-details" id="lightbox-details"></div>
-        <p class="lightbox-description" id="lightbox-description"></p>
-      </div>
-    </div>
-    <div class="lightbox-counter" id="lightbox-counter"></div>
-  </div>
-
-  <!-- IG Preview -->
-  <div class="ig-preview" id="ig-preview" hidden>
-    <button class="ig-preview-close" id="ig-preview-close" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 6 6 18M6 6l12 12"/>
-      </svg>
-    </button>
-    <button class="ig-preview-nav ig-preview-prev" id="ig-preview-prev" aria-label="Previous">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M15 18l-6-6 6-6"/>
-      </svg>
-    </button>
-    <button class="ig-preview-nav ig-preview-next" id="ig-preview-next" aria-label="Next">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M9 18l6-6-6-6"/>
-      </svg>
-    </button>
-    <div class="ig-preview-content">
-      <img class="ig-preview-image" id="ig-preview-image" src="" alt="">
-      <div class="ig-preview-meta">
-        <div class="ig-preview-username">From <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">@jagans_artfolio</a></div>
-        <p class="ig-preview-caption" id="ig-preview-caption"></p>
-        <div class="ig-preview-timestamp" id="ig-preview-timestamp"></div>
-      </div>
-    </div>
-    <div class="ig-preview-counter" id="ig-preview-counter"></div>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/demo.js"></script>
-  <script src="js/instagram.js"></script>
-  <script src="js/app.js"></script>
 </body>
 </html>
