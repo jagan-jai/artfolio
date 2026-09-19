@@ -200,12 +200,11 @@ p {
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text);
+}
+
+.header-logo-img {
+  height: 40px;
+  width: auto;
 }
 
 .header-logo-mark {
