@@ -1,4 +1,0 @@
-node_compat = true
-
-[build]
-command = "npm install && npm run build"
