@@ -3,1126 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JagansArtfolio | Fine Art Gallery & Studio</title>
-    <meta name="description" content="Professional art gallery featuring original paintings, digital art, and prints by JagansArtfolio. Browse the collection, purchase originals, or commission a custom piece.">
+    <title>Jagan's Artfolio | Official Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #c9a96e;
-            --gold-light: #e0c88a;
-            --gold-dark: #8a6e3a;
-            --bg: #0d0d0d;
-            --bg-elevated: #141414;
-            --bg-card: #1a1a1a;
-            --text: #f5f5f5;
-            --text-secondary: #a0a0a0;
-            --text-muted: #666666;
-            --border: rgba(201, 169, 110, 0.15);
-            --border-strong: rgba(201, 169, 110, 0.3);
-            --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
-            --radius: 8px;
-            --radius-lg: 16px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gold: #c19a6b;
+            --dark-bg: #121212;
+            --paper-white: #f4f1ea;
+            --overlay: rgba(0, 0, 0, 0.85);
+            --card-bg: #1a1a1a;
         }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--dark-bg); color: var(--paper-white); }
 
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-        }
-
-        a { color: var(--gold); text-decoration: none; transition: color var(--transition); }
-        a:hover { color: var(--gold-light); }
-
-        img { display: block; max-width: 100%; }
-
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* ===== Navigation ===== */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            height: 72px;
+        /* Navigation */
+        nav {
+            padding: 1.5rem 5%;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 0 32px;
-            background: rgba(13, 13, 13, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            transition: background var(--transition), border-color var(--transition);
-        }
-
-        .nav.scrolled {
-            background: rgba(13, 13, 13, 0.98);
-            border-bottom-color: var(--border-strong);
-        }
-
-        .nav-brand {
-            display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text);
-            letter-spacing: 0.02em;
+            border-bottom: 1px solid rgba(193, 154, 107, 0.3);
+            background: var(--dark-bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
+        .nav-logo { display: flex; align-items: center; gap: 12px; }
+        .nav-logo img { height: 50px; width: auto; }
+        .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--gold); letter-spacing: 1px; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { color: var(--gold); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: white; }
 
-        .nav-brand-mark {
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bg);
-            font-weight: 800;
-            font-size: 1.1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .nav-link {
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            padding: 8px 0;
-            border-bottom: 1px solid transparent;
-            transition: all var(--transition);
-        }
-
-        .nav-link:hover {
-            color: var(--text);
-            border-bottom-color: var(--gold);
-        }
-
-        .nav-link.active {
-            color: var(--text);
-            border-bottom-color: var(--gold);
-        }
-
-        .nav-cta {
-            padding: 8px 20px;
-            background: var(--gold);
-            color: var(--bg);
-            font-weight: 600;
-            border-radius: var(--radius);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            transition: all var(--transition);
-        }
-
-        .nav-cta:hover {
-            background: var(--gold-light);
-            color: var(--bg);
-            transform: translateY(-1px);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text);
-            padding: 8px;
-        }
-
-        .nav-toggle svg { width: 24px; height: 24px; }
-
-        /* ===== Hero ===== */
+        /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 70vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 120px 32px 80px;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(201, 169, 110, 0.04) 0%, transparent 60%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
             text-align: center;
-            max-width: 800px;
+            border-bottom: 1px solid var(--gold);
+            background: radial-gradient(circle, rgba(40,40,40,1) 0%, rgba(18,18,18,1) 100%);
         }
+        .hero-logo { width: 250px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(193, 154, 107, 0.4)); }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: normal; color: var(--gold); margin-bottom: 10px; }
+        .hero p { font-style: italic; color: #888; }
 
-        .hero-label {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 24px;
-            padding: 6px 14px;
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius);
-        }
+        /* Sections */
+        .section { padding: 4rem 5%; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); font-weight: normal; margin-bottom: 10px; }
+        .section-subtitle { text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; color: #666; margin-bottom: 3rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.0;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-
-        .hero-title em {
-            font-style: italic;
-            font-weight: 400;
-            color: var(--gold);
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 520px;
-            margin: 0 auto 36px;
-        }
-
-        .hero-actions {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            margin-top: 56px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-        }
-
-        .hero-stat { text-align: center; }
-
-        .hero-stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text);
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .hero-stat-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        /* ===== Buttons ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 28px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            border-radius: var(--radius);
-            transition: all var(--transition);
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        .btn-primary {
-            background: var(--gold);
-            color: var(--bg);
-            border-color: var(--gold);
-        }
-
-        .btn-primary:hover {
-            background: var(--gold-light);
-            border-color: var(--gold-light);
-            color: var(--bg);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.25);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
-            border-color: var(--border-strong);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--text);
-            color: var(--text);
-            background: rgba(245, 245, 245, 0.03);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-secondary);
-            border-color: transparent;
-        }
-
-        .btn-ghost:hover {
-            color: var(--text);
-            background: var(--bg-elevated);
-        }
-
-        /* ===== Sections ===== */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-dark {
-            background: var(--bg-elevated);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-label {
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-
-        .section-desc {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        /* ===== Gallery Grid ===== */
+        /* Live Gallery Section */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 240px;
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
-
-        .gallery-item {
+        .art-item {
             position: relative;
-            border-radius: var(--radius-lg);
+            background: var(--card-bg);
+            border: 1px solid #2a2a2a;
             overflow: hidden;
-            background: var(--bg-card);
-            cursor: pointer;
-            transition: transform var(--transition), box-shadow var(--transition);
+            transition: 0.4s ease;
         }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .gallery-item.featured {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
-        .gallery-item:nth-child(7n + 3) { grid-column: span 2; }
-        .gallery-item:nth-child(5n + 4) { grid-row: span 2; }
-
-        .gallery-item-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s var(--transition);
-        }
-
-        .gallery-item:hover .gallery-item-image {
-            transform: scale(1.04);
-        }
-
-        .gallery-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+        .art-item img { width: 100%; display: block; transition: 0.5s; }
+        .art-caption {
             padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85) 100%);
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all var(--transition);
+            background: var(--card-bg);
+            border-top: 1px solid var(--gold);
         }
+        .art-caption h4 { color: var(--gold); font-size: 0.9rem; margin-bottom: 8px; text-transform: uppercase; }
+        .art-caption p { font-size: 0.85rem; line-height: 1.4; color: #ccc; height: 60px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+        .art-item:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .art-item:hover img { transform: scale(1.03); }
 
-        .gallery-item:hover .gallery-item-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .gallery-item-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-
-        .gallery-item-meta {
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        .gallery-item-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: var(--radius-sm);
-            color: var(--gold);
-            font-size: 0.7rem;
-            opacity: 0;
-            transition: opacity var(--transition);
-        }
-
-        .gallery-item:hover .gallery-item-badge,
-        .gallery-item.featured .gallery-item-badge {
-            opacity: 1;
-        }
-
-        .gallery-item.featured .gallery-item-badge {
-            background: var(--gold);
-            color: var(--bg);
-        }
-
-        /* ===== Shop Grid ===== */
+        /* Shop Section */
         .shop-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
         }
-
         .shop-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            background: var(--card-bg);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
             overflow: hidden;
-            transition: all var(--transition);
+            transition: 0.4s ease;
         }
-
-        .shop-card:hover {
-            border-color: var(--border-strong);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
-        }
-
-        .shop-card-image {
-            width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-        }
-
-        .shop-card-body {
-            padding: 20px;
-        }
-
-        .shop-card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .shop-card-meta {
-            font-size: 0.7rem;
-            letter-spacing: 0.08em;
+        .shop-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .shop-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+        .shop-card-body { padding: 1.5rem; }
+        .shop-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .shop-card .price { color: var(--gold); font-weight: bold; display: block; margin-bottom: 1rem; font-size: 1rem; }
+        .btn-gold { 
+            display: inline-block; width: 100%; text-align: center;
+            padding: 10px 20px; 
+            border: 1px solid var(--gold); 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 0.7rem; 
+            letter-spacing: 2px;
+            transition: 0.3s;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .shop-card-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .shop-card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-        }
-
-        .shop-card-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
             font-weight: 600;
-            color: var(--text);
-        }
-
-        .shop-card-btn {
-            padding: 8px 16px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            border-radius: var(--radius);
+            background: none;
             cursor: pointer;
-            transition: all var(--transition);
         }
+        .btn-gold:hover { background: var(--gold); color: black; }
 
-        .shop-card-btn:hover {
-            background: var(--gold);
-            color: var(--bg);
+        /* Commission Section */
+        .commission-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid #2a2a2a;
         }
-
-        /* ===== Commission Form ===== */
-        .commission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: start;
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 1rem; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px;
+            font-family: inherit; font-size: 0.95rem;
         }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .submit-btn { width: 100%; padding: 1rem; background: var(--gold); border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; border-radius: 5px; transition: 0.3s; color: #000; }
+        .submit-btn:hover { background: #e0c88a; }
+        .form-note { font-size: 0.75rem; color: #666; margin-top: 12px; text-align: center; }
 
-        .commission-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-        }
+        /* Footer */
+        footer { padding: 4rem 5%; text-align: center; border-top: 1px solid #2a2a2a; margin-top: 50px; }
+        .social-link { color: var(--gold); font-size: 1.5rem; margin: 0 15px; }
 
-        .commission-info p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .commission-features {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 32px;
-        }
-
-        .commission-feature {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-
-        .commission-feature-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--radius);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .commission-feature-text h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .commission-feature-text p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .commission-form {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            color: var(--text);
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: border-color var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 14px;
-            background: var(--gold);
-            border: none;
-            color: var(--bg);
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: all var(--transition);
-        }
-
-        .form-submit:hover {
-            background: var(--gold-light);
-            transform: translateY(-1px);
-        }
-
-        .form-note {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 12px;
-            text-align: center;
-        }
-
-        /* ===== About ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 64px;
-            align-items: start;
-        }
-
-        .about-image {
-            display: flex;
-            justify-content: center;
-        }
-
-        .about-image-frame {
-            width: 100%;
-            max-width: 320px;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-
-        .about-image-frame img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-        }
-
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .about-subtitle {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-
-        .about-text {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .about-text p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.75;
-        }
-
-        .about-text p:first-child {
-            font-size: 1.1rem;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            padding: 48px 0;
-            border-top: 1px solid var(--border);
-            background: var(--bg-elevated);
-        }
-
-        .footer-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .footer-links a {
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .footer-links a:hover {
-            color: var(--text-secondary);
-        }
-
-        .footer-copy {
-            font-size: 0.65rem;
-            color: var(--text-faint);
-        }
-
-        /* ===== Responsive ===== */
-        @media (max-width: 1200px) {
-            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 900px) {
+        /* Responsive */
+        @media (max-width: 768px) {
             .nav-links { display: none; }
-            .nav-toggle { display: block; }
-            .hero { padding: 100px 24px 60px; }
-            .hero-stats { gap: 32px; }
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 200px;
-                gap: 12px;
-            }
-            .gallery-item.featured {
-                grid-column: span 2;
-                grid-row: span 1;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .about-image {
-                order: -1;
-            }
-            .about-image-frame {
-                max-width: 240px;
-            }
-            .commission-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .container { padding: 0 24px; }
-        }
-
-        @media (max-width: 600px) {
-            .nav { padding: 0 16px; height: 60px; }
-            .hero { padding: 80px 16px 40px; }
-            .hero-title { font-size: 2rem; }
-            .hero-stats { gap: 20px; }
-            .hero-stat-number { font-size: 1.4rem; }
-            .section { padding: 60px 0; }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 220px;
-                gap: 12px;
-            }
-            .gallery-item.featured { grid-column: span 1; }
-            .gallery-item:nth-child(7n + 3) { grid-column: span 1; }
-            .gallery-item:nth-child(5n + 4) { grid-row: span 1; }
-            .about-text p { font-size: 0.9rem; }
-            .about-text p:first-child { font-size: 1rem; }
-            .commission-form { padding: 24px; }
-            .container { padding: 0 16px; }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 16px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            html { scroll-behavior: auto; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .shop-grid { grid-template-columns: 1fr; }
+            .commission-container { padding: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <nav class="nav" id="nav">
-            <a href="#top" class="nav-brand">
-                <span class="nav-brand-mark">J</span>
-                JagansArtfolio
-            </a>
-            <div class="nav-links" id="nav-links">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#gallery" class="nav-link">Gallery</a>
-                <a href="#shop" class="nav-link">Shop</a>
-                <a href="#commission" class="nav-link">Commission</a>
-                <a href="#commission" class="btn btn-primary nav-cta">Request Art</a>
-            </div>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-                </svg>
-            </button>
-        </nav>
-        <div class="mobile-menu" id="mobile-menu" hidden>
-            <a href="#gallery" class="mobile-menu-link">Gallery</a>
-            <a href="#shop" class="mobile-menu-link">Shop</a>
-            <a href="#commission" class="mobile-menu-link">Commission</a>
+    <nav>
+        <div class="nav-logo">
+            <img src="assets/logo.svg" alt="Jagan's Artfolio">
+            <span class="nav-logo-text">JagansArtfolio</span>
         </div>
+        <div class="nav-links">
+            <a href="#gallery">The Collection</a>
+            <a href="#shop">Shop</a>
+            <a href="#commission">Commissions</a>
+            <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <img src="assets/logo.svg" alt="Jagan's Artfolio" class="hero-logo">
+        <h1>Jagan's Artfolio</h1>
+        <p>Traditional Soul. Digital Precision.</p>
     </header>
 
-    <main>
+    <!-- LIVE GALLERY - Instagram Feed via Behold -->
+    <section class="section" id="gallery">
+        <div class="section-header">
+            <h2 class="section-title">The Live Gallery</h2>
+            <p class="section-subtitle">Syncing from @jagans_artfolio</p>
+        </div>
 
-        <!-- Hero -->
-        <section class="hero" id="top">
-            <div class="hero-bg"></div>
-            <div class="hero-content container">
-                <span class="hero-label">Fine Art Studio</span>
-                <h1 class="hero-title">Jagans<em>Artfolio</em></h1>
-                <p class="hero-subtitle">
-                    A multidisciplinary artist working across painting, digital media, photography, and mixed media. Each medium informs the others — the discipline of one feeds the freedom of another.
-                </p>
-                <div class="hero-actions">
-                    <a href="#gallery" class="btn btn-primary">View the Work</a>
-                    <a href="#commission" class="btn btn-outline">Commission a Piece</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">50+</div>
-                        <div class="hero-stat-label">Artworks</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">7</div>
-                        <div class="hero-stat-label">Mediums</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">100+</div>
-                        <div class="hero-stat-label">Collectors</div>
-                    </div>
+        <div class="gallery-grid">
+            <behold-widget feed-id="qLxGmCyeRwTJ7WrQZXwu"></behold-widget>
+        </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="section" id="shop" style="background: #0a0a0a;">
+        <div class="section-header">
+            <h2 class="section-title">Available Artworks</h2>
+            <p class="section-subtitle">Originals & Limited Prints</p>
+        </div>
+        <div class="shop-grid">
+            <div class="shop-card">
+                <img src="https://picsum.photos/seed/art1/600/450" alt="Artwork">
+                <div class="shop-card-body">
+                    <h3>Midnight Serenity</h3>
+                    <span class="price">₹35,000 (Original)</span>
+                    <button class="btn-gold">Purchase Original</button>
                 </div>
             </div>
-        </section>
-
-        <!-- About -->
-        <section class="section section-dark" id="about">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-image">
-                        <div class="about-image-frame">
-                            <img src="https://picsum.photos/seed/artist/600/700" alt="Jagan S — Artist">
-                        </div>
-                    </div>
-                    <div class="about-content">
-                        <div class="section-label">About the Artist</div>
-                        <h2 class="section-title">Jagan S</h2>
-                        <p class="about-subtitle">Biotechnology graduate. Healthcare strategist. Self-taught artist.</p>
-                        <div class="about-text">
-                            <p>
-                                I studied biotechnology. I practice art. The two are not as separate as they sound.
-                            </p>
-                            <p>
-                                Growing up in Bangalore, I was the student who filled margins with doodles — characters, faces, shapes flowing from pencil to paper without much thought. It was instinct. Even through my biotechnology degree, art remained the constant I returned to between lectures and lab work.
-                            </p>
-                            <p>
-                                Today I work in healthcare marketing strategy. I also paint, draw, and create — not as a hobby, but as a parallel practice. Graphite and charcoal. Oil and acrylic. Watercolor and soft pastel. Mixed media. I am currently exploring sculpture and modelling. Each medium teaches something the others cannot, and I let the idea dictate the material.
-                            </p>
-                            <p>
-                                Realism is where I begin — portraits, birds, animals, the natural world. But I make room for exploration too. Growth lives outside the comfort zone, and I try to visit often.
-                            </p>
-                            <p>
-                                My work has been exhibited at national-level exhibitions. I have completed commissioned pieces for clients across the globe, handling everything from concept and creation to careful packaging and international delivery. Every original is signed and accompanied by a certificate of authenticity.
-                            </p>
-                            <p>
-                                I believe discipline and creativity are not opposites. They are partners. One shows up on schedule. The other surprises you. Together, they make the work possible.
-                            </p>
-                        </div>
-                    </div>
+            <div class="shop-card">
+                <img src="https://picsum.photos/seed/art2/600/450" alt="Artwork">
+                <div class="shop-card-body">
+                    <h3>Digital Dreams Print</h3>
+                    <span class="price">₹45.00 (Limited Print)</span>
+                    <button class="btn-gold">Order Print</button>
                 </div>
-            </div>
-        </section>
-
-        <!-- Gallery -->
-        <section class="section" id="gallery">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Portfolio</div>
-                    <h2 class="section-title">The Collection</h2>
-                    <p class="section-desc">A curated set of artworks across different mediums. Click any piece to see it larger.</p>
-                </div>
-
-                <div class="gallery-grid" id="gallery-grid">
-                    <!-- Populated by Behold widget or demo data -->
-                    <behold-widget feed-id="qLxGmCyeRwTJ7WrQZXwu"></behold-widget>
-                </div>
-            </div>
-        </section>
-
-        <!-- Shop -->
-        <section class="section section-dark" id="shop">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Shop</div>
-                    <h2 class="section-title">Available Artworks</h2>
-                    <p class="section-desc">Original pieces and limited prints available for purchase.</p>
-                </div>
-
-                <div class="shop-grid">
-                    <div class="shop-card">
-                        <img class="shop-card-image" src="https://picsum.photos/seed/shop1/600/450" alt="Artwork">
-                        <div class="shop-card-body">
-                            <h3 class="shop-card-title">Geometries of Silence</h3>
-                            <div class="shop-card-meta">Oil on canvas · 2024</div>
-                            <p class="shop-card-desc">A quiet study of form and light. The canvas waits, then resolves into planes of color.</p>
-                            <div class="shop-card-footer">
-                                <span class="shop-card-price">₹35,000</span>
-                                <button class="shop-card-btn">Inquire</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <img class="shop-card-image" src="https://picsum.photos/seed/shop2/600/450" alt="Artwork">
-                        <div class="shop-card-body">
-                            <h3 class="shop-card-title">Blue Hours</h3>
-                            <div class="shop-card-meta">Digital print · 2023</div>
-                            <p class="shop-card-desc">The hour between day and night, rendered as a field of gradient.</p>
-                            <div class="shop-card-footer">
-                                <span class="shop-card-price">₹8,500</span>
-                                <button class="shop-card-btn">Order Print</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <img class="shop-card-image" src="https://picsum.photos/seed/shop3/600/450" alt="Artwork">
-                        <div class="shop-card-body">
-                            <h3 class="shop-card-title">Still Point</h3>
-                            <div class="shop-card-meta">Photography · 2024</div>
-                            <p class="shop-card-desc">A found moment: light across an empty room, the architecture of absence.</p>
-                            <div class="shop-card-footer">
-                                <span class="shop-card-price">₹12,000</span>
-                                <button class="shop-card-btn">Purchase</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Commission -->
-        <section class="section" id="commission">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-label">Commission</div>
-                    <h2 class="section-title">Request a Custom Piece</h2>
-                    <p class="section-desc">Every commission begins with a conversation. Tell me about your vision.</p>
-                </div>
-
-                <div class="commission-grid">
-                    <div class="commission-info">
-                        <h3>Let's create something together</h3>
-                        <p>
-                            Whether it's a portrait, a landscape, or an abstract exploration — I work closely with each client to bring their vision to life. Every piece is original, signed, and delivered with a certificate of authenticity.
-                        </p>
-                        <div class="commission-features">
-                            <div class="commission-feature">
-                                <div class="commission-feature-icon"><i class="fas fa-palette"></i></div>
-                                <div class="commission-feature-text">
-                                    <h4>Multiple Mediums</h4>
-                                    <p>Oil, acrylic, digital, photography, or mixed media — choose what fits your vision.</p>
-                                </div>
-                            </div>
-                            <div class="commission-feature">
-                                <div class="commission-feature-icon"><i class="fas fa-comments"></i></div>
-                                <div class="commission-feature-text">
-                                    <h4>Collaborative Process</h4>
-                                    <p>Regular updates and revisions until the piece is exactly right.</p>
-                                </div>
-                            </div>
-                            <div class="commission-feature">
-                                <div class="commission-feature-icon"><i class="fas fa-shipping-fast"></i></div>
-                                <div class="commission-feature-text">
-                                    <h4>Worldwide Delivery</h4>
-                                    <p>Carefully packaged and shipped to your door, wherever you are.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <form class="commission-form" action="https://formsubmit.co/jagansartfolio@gmail.com" method="POST">
-                        <input type="hidden" name="_subject" value="New Commission Request from JagansArtfolio">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://jagansartfolio.com/?sent=true">
-
-                        <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" name="name" placeholder="Full name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" name="email" placeholder="your@email.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Medium</label>
-                            <select name="medium" required>
-                                <option value="">Select a medium...</option>
-                                <option>Oil on canvas</option>
-                                <option>Acrylic on canvas</option>
-                                <option>Digital art</option>
-                                <option>Photography</option>
-                                <option>Drawing / Sketch</option>
-                                <option>Mixed media</option>
-                                <option>Not sure yet</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Project Details</label>
-                            <textarea name="details" placeholder="Describe your vision, size, deadline, reference images..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="form-submit">Send Request</button>
-                        <p class="form-note">I'll respond within 24 hours.</p>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="nav-brand-mark">J</span>
-                    JagansArtfolio
-                </div>
-                <div class="footer-links">
-                    <a href="#gallery">Gallery</a>
-                    <a href="#shop">Shop</a>
-                    <a href="#commission">Commission</a>
-                    <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">Instagram</a>
-                </div>
-                <div class="footer-copy">© 2026 JagansArtfolio — All works copyrighted to the artist</div>
             </div>
         </div>
+    </section>
+
+    <!-- COMMISSION -->
+    <section class="section" id="commission">
+        <div class="section-header">
+            <h2 class="section-title">Get a Custom Piece</h2>
+            <p class="section-subtitle">Every commission begins with a conversation</p>
+        </div>
+        <div class="commission-container">
+            <form action="https://formsubmit.co/jagansartfolio@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Commission Request">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Commission Type</label>
+                    <select name="type" required>
+                        <option value="">Select type...</option>
+                        <option>Digital Portrait</option>
+                        <option>Canvas Painting (Physical)</option>
+                        <option>Character Design</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Project Details</label>
+                    <textarea name="details" placeholder="Describe your vision, size, and deadline..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Request</button>
+                <p class="form-note">I'll respond within 24 hours</p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p style="margin-bottom: 20px; letter-spacing: 2px;">JAGAN'S ARTFOLIO &copy; 2026</p>
+        <a href="https://instagram.com/jagans_artfolio" class="social-link"><i class="fab fa-instagram"></i></a>
     </footer>
 
     <!-- Behold Widget Script -->
@@ -1132,29 +260,6 @@
         const d=document,s=d.createElement("script");s.type="module";
         s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
       })();
-    </script>
-
-    <!-- Mobile menu toggle -->
-    <script>
-        const navToggle = document.getElementById('nav-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-
-        navToggle?.addEventListener('click', () => {
-            const isOpen = !mobileMenu.hasAttribute('hidden');
-            if (isOpen) mobileMenu.setAttribute('hidden', '');
-            else mobileMenu.removeAttribute('hidden');
-        });
-
-        mobileMenu?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.setAttribute('hidden', ''));
-        });
-
-        // Nav scroll state
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav?.classList.toggle('scrolled', window.scrollY > 20);
-        });
     </script>
 
 </body>
