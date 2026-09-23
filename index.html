@@ -860,14 +860,14 @@
                     <div class="about-content">
                         <div class="section-label">About the Artist</div>
                         <h2 class="section-title">Jagan S</h2>
-                        <p class="about-subtitle">Biotechnology graduate. Healthcare strategist. Self-taught artist.</p>
+                        <p class="about-subtitle">Biotechnology graduate. Healthcare strategist. Artist.</p>
                         <div class="about-text">
-                            <p>I studied biotechnology. I practice art. The two are not as separate as they sound.</p>
-                            <p>Growing up in Bangalore, I was the student who filled margins with doodles — characters, faces, shapes flowing from pencil to paper without much thought. It was instinct. Even through my biotechnology degree, art remained the constant I returned to between lectures and lab work.</p>
-                            <p>Today I work in healthcare marketing strategy. I also paint, draw, and create — not as a hobby, but as a parallel practice. Graphite and charcoal. Oil and acrylic. Watercolor and soft pastel. Mixed media. I am currently exploring sculpture and modelling. Each medium teaches something the others cannot, and I let the idea dictate the material.</p>
-                            <p>Realism is where I begin — portraits, birds, animals, the natural world. But I make room for exploration too. Growth lives outside the comfort zone, and I try to visit often.</p>
-                            <p>My work has been exhibited at national-level exhibitions. I have completed commissioned pieces for clients across the globe, handling everything from concept and creation to careful packaging and international delivery. Every original is signed and accompanied by a certificate of authenticity.</p>
-                            <p>I believe discipline and creativity are not opposites. They are partners. One shows up on schedule. The other surprises you. Together, they make the work possible.</p>
+                            <p>I studied biotechnology and practice art. They're closer than they sound.</p>
+                            <p>In Bangalore, I filled margins with doodles, faces, shapes, lines that came without much thought. Instinct. Even through a biotechnology degree, art stayed with me between lectures and lab work.</p>
+                            <p>Now I work in healthcare marketing strategy and paint, draw, create not as a hobby, as parallel practice. Graphite, charcoal, oil, acrylic, watercolor, pastel, mixed media. I'm exploring sculpture and modelling; each material teaches something the others don't, and I follow the idea rather than forcing the medium.</p>
+                            <p>Realism is where I start portraits, birds, animals, the natural world but I leave space for exploration. Growth happens outside comfort, and I try to visit often.</p>
+                            <p>My work has been shown at exhibitions. Commissions completed for international clients concept through delivery, signed originals with certificates.</p>
+                            <p>Discipline and creativity aren't opposites. They're partners. One shows up. The other surprises. Together they make the work possible.</p>
                         </div>
                     </div>
                 </div>
@@ -883,8 +883,8 @@
                     <p class="section-desc">A curated set of artworks across different mediums. Click any piece to see it larger.</p>
                 </div>
 
-                <div class="gallery-grid">
-                    <behold-widget feed-id="qLxGmCyeRwTJ7WrQZXwu"></behold-widget>
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Populated by JS -->
                 </div>
 
                 <div class="gallery-cta">
@@ -1046,17 +1046,40 @@
         </div>
     </footer>
 
-    <!-- Behold Widget Script -->
+    <!-- Gallery JS -->
     <script>
-      (() => {
-        if(window.__bhldScript)return;window.__bhldScript=true;
-        const d=document,s=d.createElement("script");s.type="module";
-        s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
-      })();
-    </script>
+        // Curated selection of artworks for the main page preview
+        const CURATED_ARTWORKS = [
+            {file: "Acrylic/artwork_001.jpg", caption: "\"Golden Beak\"", medium: "Acrylic"},
+            {file: "Oil/artwork_003.jpg", caption: "Hope is wax becoming light", medium: "Oil"},
+            {file: "Charcoal/artwork_007.jpg", caption: "\"shimmered grace\"", medium: "Charcoal"},
+            {file: "Digital/artwork_047.jpg", caption: "Digital portrait", medium: "Digital"},
+            {file: "Watercolor/artwork_091.jpg", caption: "Wash study", medium: "Watercolor"},
+            {file: "Pencil/artwork_002.jpg", caption: "\"Nritya\"", medium: "Pencil"},
+            {file: "Pen/artwork_024.jpg", caption: "Pen drawing", medium: "Pen"},
+            {file: "Photography/artwork_044.jpg", caption: "Through the lens", medium: "Photography"},
+            {file: "Ink/artwork_046.jpg", caption: "Ink study", medium: "Ink"},
+            {file: "Mixed Media/artwork_077.jpg", caption: "Mixed media experiment", medium: "Mixed Media"},
+            {file: "Pastel/artwork_076.jpg", caption: "Soft pastel study", medium: "Pastel"},
+            {file: "Charcoal/artwork_008.jpg", caption: "\"Reverie\"", medium: "Charcoal"}
+        ];
 
-    <!-- Nav scroll state -->
-    <script>
+        const galleryGrid = document.getElementById('gallery-grid');
+        
+        CURATED_ARTWORKS.forEach((art, i) => {
+            const item = document.createElement('article');
+            item.className = 'gallery-item' + (i === 0 ? ' featured' : '');
+            item.innerHTML = `
+                <img class="gallery-item-image" src="assets/artworks/${art.file}" alt="${art.caption}" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">${art.caption}</div>
+                    <div class="gallery-item-meta">${art.medium}</div>
+                </div>
+            `;
+            galleryGrid.appendChild(item);
+        });
+
+        // Nav scroll state
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             nav?.classList.toggle('scrolled', window.scrollY > 20);
