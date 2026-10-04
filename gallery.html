@@ -1,970 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery — JagansArtfolio | Art by Medium</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --gold: #c9a96e;
-            --gold-light: #e0c88a;
-            --gold-dark: #8a6e3a;
-            --bg: #0d0d0d;
-            --bg-elevated: #141414;
-            --bg-card: #1a1a1a;
-            --text: #f5f5f5;
-            --text-secondary: #a0a0a0;
-            --text-muted: #666666;
-            --border: rgba(201, 169, 110, 0.15);
-            --border-strong: rgba(201, 169, 110, 0.3);
-            --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
-            --radius: 8px;
-            --radius-lg: 16px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Complete Collection — 203 Works | JagansArtfolio</title>
+<meta name="description" content="Browse all 203 artworks by Jagan S — pencil, charcoal, digital, watercolour, acrylic, oil and more. Filter by medium, view large, inquire per piece.">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0b0a; --bg2:#121110; --bg3:#181614;
+  --gold:#b08d57; --gold2:#d4b87a;
+  --text:#f1eee9; --text2:#a49e94; --text3:#6b665e;
+  --line:rgba(255,255,255,.07); --line-gold:rgba(176,141,87,.25);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.61,.21,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(176,141,87,.35)}
+.microlabel{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.wrap{max-width:1440px;margin:0 auto;padding:0 40px}
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(12,11,10,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-brand img{width:28px;height:28px}
+.nav-brand span{font-family:var(--serif);font-size:18px;letter-spacing:.08em}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a.nlink{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text2);padding:6px 0;border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.nav-links a.nlink:hover{color:var(--text);border-bottom-color:var(--gold)}
+.nav-cta{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--bg)!important;background:var(--gold);padding:11px 20px;border-radius:2px;transition:.3s}
+.nav-cta:hover{background:var(--gold2)}
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-        }
+/* hero */
+.page-hero{padding:150px 0 54px;border-bottom:1px solid var(--line)}
+.page-hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(40px,6vw,76px);line-height:1;margin:18px 0 14px}
+.page-hero h1 em{font-style:italic;color:var(--gold2)}
+.page-hero p{color:var(--text2);max-width:560px}
+.hero-hint{margin-top:22px;font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text3)}
 
-        a { color: var(--gold); text-decoration: none; transition: color var(--transition); }
-        a:hover { color: var(--gold-light); }
-        img { display: block; max-width: 100%; }
+/* filter bar */
+.filter-section{position:sticky;top:76px;z-index:50;background:rgba(12,11,10,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:18px 0}
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px}
+.fbtn{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--text2);cursor:pointer;transition:.3s var(--ease);white-space:nowrap}
+.fbtn:hover{border-color:var(--line-gold);color:var(--text)}
+.fbtn.active{background:var(--gold);border-color:var(--gold);color:var(--bg);font-weight:500}
+.fbtn .cnt{opacity:.55;margin-left:6px}
 
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
+/* gallery */
+.gallery-section{padding:56px 0 90px}
+.medium-section{margin-bottom:64px}
+.medium-header{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.medium-title{font-family:var(--serif);font-weight:300;font-size:30px}
+.medium-count{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text3)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gitem{position:relative;overflow:hidden;background:var(--bg3);cursor:pointer;border-radius:2px}
+.gitem img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .8s var(--ease)}
+.gitem:hover img{transform:scale(1.05)}
+.gitem .ov{position:absolute;inset:auto 0 0 0;padding:18px 16px 14px;background:linear-gradient(transparent,rgba(10,9,8,.92));opacity:0;transform:translateY(10px);transition:.4s var(--ease)}
+.gitem:hover .ov{opacity:1;transform:none}
+.gitem .ov h3{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.25}
+.gitem .ov p{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-top:6px}
+.empty-note{padding:70px 0;text-align:center;color:var(--text3);font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
 
-        /* Nav */
-        .nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100; height: 72px;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 32px;
-            background: rgba(13, 13, 13, 0.92);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-brand {
-            display: flex; align-items: center; gap: 12px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem; font-weight: 600; color: var(--text);
-        }
-        .nav-brand-mark {
-            width: 36px; height: 36px; border-radius: 6px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            display: flex; align-items: center; justify-content: center;
-            color: var(--bg); font-weight: 800; font-size: 1.1rem;
-        }
-        .nav-links { display: flex; align-items: center; gap: 40px; }
-        .nav-link {
-            font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
-            text-transform: uppercase; color: var(--text-secondary);
-            padding: 8px 0; border-bottom: 1px solid transparent;
-            transition: all var(--transition);
-        }
-        .nav-link:hover { color: var(--text); border-bottom-color: var(--gold); }
-        .nav-link.active { color: var(--text); border-bottom-color: var(--gold); }
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:1000;background:rgba(9,8,7,.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.lb.open{opacity:1;pointer-events:all}
+.lb-stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:76px 96px 64px}
+.lb-fig{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:min(1100px,88vw);max-height:100%}
+.lb-img{max-height:calc(100vh - 240px);max-width:100%;object-fit:contain;border-radius:2px;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.lb-cap{text-align:center;max-width:640px}
+.lb-cap h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.2}
+.lb-cap .det{color:var(--text2);font-size:13px;margin-top:7px}
+.lb-cap .med{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.lb-inquire{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--line-gold);padding:11px 20px;border-radius:2px;transition:.3s}
+.lb-inquire:hover{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+.lb-top{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;z-index:5}
+.lb-count{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--text3)}
+.lb-top .lb-med{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.lb-close{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:50%;color:var(--text2);cursor:pointer;transition:.3s}
+.lb-close:hover{color:var(--text);background:rgba(255,255,255,.12)}
+.lb-close svg{width:17px;height:17px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:50%;color:var(--text2);cursor:pointer;transition:.3s;z-index:5}
+.lb-nav:hover{color:var(--text);background:rgba(255,255,255,.12)}
+.lb-nav svg{width:18px;height:18px}
+.lb-prev{left:24px}.lb-next{right:24px}
+.lb-mediums{position:absolute;left:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:7px;z-index:4}
+.lbm{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--text3);cursor:pointer;transition:.3s;white-space:nowrap;text-align:left}
+.lbm:hover{border-color:var(--line-gold);color:var(--text)}
+.lbm.active{border-color:var(--gold);color:var(--gold2)}
+.lb-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--text3);white-space:nowrap}
 
-        /* Hero */
-        .page-hero {
-            padding: 120px 32px 60px;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-        .page-hero h1 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            margin-bottom: 12px;
-            color: var(--text);
-        }
-        .page-hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 500px;
-            margin: 0 auto;
-        }
+/* footer */
+footer{padding:56px 0 36px;border-top:1px solid var(--line)}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{width:30px;height:30px}
+.foot-brand span{font-family:var(--serif);font-size:19px;letter-spacing:.06em}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap}
+.foot-links a{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);transition:color .3s}
+.foot-links a:hover{color:var(--gold2)}
 
-        /* Filter Bar */
-        .filter-section {
-            padding: 2rem 0;
-            position: sticky;
-            top: 72px;
-            z-index: 50;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-        }
-        .filter-bar {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .filter-btn {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 8px 20px;
-            border: 1px solid var(--border);
-            border-radius: 9999px;
-            background: transparent;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all var(--transition);
-        }
-        .filter-btn:hover {
-            border-color: var(--text-muted);
-            color: var(--text);
-        }
-        .filter-btn.active {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: var(--bg);
-            font-weight: 600;
-        }
-
-        /* Gallery Grid */
-        .gallery-section { padding: 4rem 0; }
-        .medium-section { margin-bottom: 4rem; }
-        .medium-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .medium-title {
-            font-size: 1.5rem;
-            color: var(--text);
-            font-weight: 400;
-        }
-        .medium-count {
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: all var(--transition);
-        }
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--border-strong);
-        }
-        .gallery-item img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            transition: transform 0.5s var(--transition);
-        }
-        .gallery-item:hover img { transform: scale(1.04); }
-        .gallery-item-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 16px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all var(--transition);
-        }
-        .gallery-item:hover .gallery-item-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .gallery-item-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-        .gallery-item-meta {
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        /* ===== Lightbox ===== */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .lightbox.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px; right: 20px;
-            width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-secondary);
-            cursor: pointer;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.2s ease;
-            z-index: 10;
-        }
-        .lightbox-close:hover {
-            color: var(--text);
-            background: rgba(255, 255, 255, 0.2);
-        }
-        .lightbox-close svg { width: 20px; height: 20px; }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-secondary);
-            cursor: pointer;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.2s ease;
-            z-index: 10;
-        }
-        .lightbox-nav:hover {
-            color: var(--text);
-            background: rgba(255, 255, 255, 0.2);
-        }
-        .lightbox-prev { left: 20px; }
-        .lightbox-next { right: 20px; }
-        .lightbox-nav svg { width: 20px; height: 20px; }
-
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 75vh;
-            object-fit: contain;
-            border-radius: var(--radius);
-        }
-        .lightbox-meta {
-            text-align: center;
-            max-width: 500px;
-        }
-        .lightbox-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-        .lightbox-medium {
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-        .lightbox-counter {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-        }
-
-        .medium-nav {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .medium-nav-btn {
-            padding: 6px 12px;
-            font-size: 0.65rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border: 1px solid var(--border);
-            border-radius: 9999px;
-            background: transparent;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-        .medium-nav-btn:hover,
-        .medium-nav-btn.active {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 48px 0;
-            border-top: 1px solid var(--border);
-            background: var(--bg-elevated);
-        }
-        .footer-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        .footer-links { display: flex; gap: 32px; }
-        .footer-links a {
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-        .footer-copy {
-            font-size: 0.65rem;
-            color: var(--text-faint);
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 12px;
-            }
-            .medium-nav { display: none; }
-            .lightbox-nav { display: none; }
-        }
-        @media (max-width: 600px) {
-            .nav { padding: 0 16px; height: 60px; }
-            .page-hero { padding: 100px 16px 40px; }
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            .filter-btn {
-                padding: 6px 14px;
-                font-size: 0.7rem;
-            }
-            .lightbox-content { max-width: 95vw; }
-        }
-    </style>
+@media(max-width:1100px){
+  .lb-mediums{display:none}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+}
+@media(max-width:900px){
+  .wrap{padding:0 24px}
+  .nav{padding:0 24px;height:66px}
+  .nav-links a.nlink{display:none}
+  .filter-section{top:66px}
+  .lb-stage{padding:70px 20px 80px}
+  .lb-nav{display:none}
+  .lb-img{max-height:calc(100vh - 280px)}
+}
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr 1fr;gap:9px}
+  .gitem .ov{padding:12px 10px 10px}
+  .gitem .ov h3{font-size:14px}
+  .fbtn{padding:8px 12px;font-size:8.5px}
+  .lb-cap h3{font-size:20px}
+  .page-hero{padding:120px 0 40px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <nav class="nav">
-            <a href="index.html" class="nav-brand">
-                <span class="nav-brand-mark">J</span>
-                JagansArtfolio
-            </a>
-            <div class="nav-links">
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="gallery.html" class="nav-link active">Gallery</a>
-                <a href="index.html#shop" class="nav-link">Shop</a>
-                <a href="index.html#commission" class="nav-link">Commission</a>
-            </div>
-        </nav>
-    </header>
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><img src="assets/logo.svg" alt=""><span>JagansArtfolio</span></a>
+  <div class="nav-links">
+    <a class="nlink" href="index.html#about">About</a>
+    <a class="nlink" href="index.html#mediums">Mediums</a>
+    <a class="nlink" href="index.html#commissions">Commissions</a>
+    <a class="nlink" href="catalogue.html">Catalogue</a>
+    <a class="nav-cta" href="index.html">Home</a>
+  </div>
+</nav>
 
-    <main>
-        <section class="page-hero">
-            <h1>The Collection</h1>
-            <p>Browse 203 artworks across 12 mediums. Filter by medium to explore.</p>
-        </section>
+<section class="page-hero">
+  <div class="wrap">
+    <span class="microlabel">The Complete Collection</span>
+    <h1>All <em>203</em> works</h1>
+    <p>The full studio archive, sorted by medium. Click any piece to view it large — swipe left/right for images, up/down to change medium, or use the arrow keys.</p>
+    <p class="hero-hint">203 artworks · 12 mediums · updated as the studio produces</p>
+  </div>
+</section>
 
-        <section class="filter-section">
-            <div class="container">
-                <div class="filter-bar" id="filter-bar">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                </div>
-            </div>
-        </section>
+<section class="filter-section">
+  <div class="wrap"><div class="filter-bar" id="filter-bar"></div></div>
+</section>
 
-        <section class="gallery-section" id="gallery-content">
-            <!-- Populated by JS -->
-        </section>
-    </main>
+<section class="gallery-section" id="gallery-content"></section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="nav-brand-mark">J</span>
-                    JagansArtfolio
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="gallery.html">Gallery</a>
-                    <a href="index.html#commission">Commission</a>
-                    <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">Instagram</a>
-                </div>
-                <div class="footer-copy">© 2026 JagansArtfolio — All works copyrighted to the artist</div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightbox-close" aria-label="Close">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 6 6 18M6 6l12 12"/>
-            </svg>
-        </button>
-        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 18l-6-6 6-6"/>
-            </svg>
-        </button>
-        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 18l6-6-6-6"/>
-            </svg>
-        </button>
-
-        <div class="medium-nav" id="medium-nav"></div>
-
-        <div class="lightbox-content">
-            <img class="lightbox-image" id="lightbox-image" src="" alt="">
-            <div class="lightbox-meta">
-                <h3 class="lightbox-title" id="lightbox-title"></h3>
-                <span class="lightbox-medium" id="lightbox-medium"></span>
-            </div>
-        </div>
-        <div class="lightbox-counter" id="lightbox-counter"></div>
+<footer>
+  <div class="wrap foot">
+    <div class="foot-brand"><img src="assets/logo.svg" alt=""><span>JagansArtfolio</span></div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#commissions">Commissions</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="https://instagram.com/jagans_artfolio" target="_blank" rel="noopener">Instagram</a>
     </div>
+    <span class="medium-count">© 2026 JagansArtfolio — All works © Jagan S</span>
+  </div>
+</footer>
 
-    <script>
-        const ARTWORKS_DATA = {
-            "Acrylic": [
-                {"file": "Acrylic/artwork_001.jpg", "caption": "\"Golden Beak\""},
-                {"file": "Acrylic/artwork_006.jpg", "caption": "\"Light of devotion\""},
-                {"file": "Acrylic/artwork_009.jpg", "caption": "Late night quick paint"},
-                {"file": "Acrylic/artwork_033.jpg", "caption": "\"Panjurli daiva from kantara\""},
-                {"file": "Acrylic/artwork_039.jpg", "caption": "BLUE"},
-                {"file": "Acrylic/artwork_041.jpg", "caption": "3D Flower painting acrylic and modelling paste"},
-                {"file": "Acrylic/artwork_043.jpg", "caption": "Ganesha chaturthi special"}
-            ],
-            "Charcoal": [
-                {"file": "Charcoal/artwork_004.jpg", "caption": "Charcoal on paper, A5"},
-                {"file": "Charcoal/artwork_007.jpg", "caption": "\"shimmered grace\""},
-                {"file": "Charcoal/artwork_008.jpg", "caption": "\"Reverie\""},
-                {"file": "Charcoal/artwork_014.jpg", "caption": "Sketching practice"},
-                {"file": "Charcoal/artwork_018.jpg", "caption": "\"In the Woods\""},
-                {"file": "Charcoal/artwork_026.jpg", "caption": "\"Apsara\""},
-                {"file": "Charcoal/artwork_031.jpg", "caption": "Study of light and shadow"},
-                {"file": "Charcoal/artwork_034.jpg", "caption": "\"Meditation\""},
-                {"file": "Charcoal/artwork_049.jpg", "caption": "\"Ganesha\""},
-                {"file": "Charcoal/artwork_054.jpg", "caption": "Freehand sketch"},
-                {"file": "Charcoal/artwork_062.jpg", "caption": "\"Shiva\""},
-                {"file": "Charcoal/artwork_065.jpg", "caption": "Observational drawing"},
-                {"file": "Charcoal/artwork_068.jpg", "caption": "\"Expression study\""},
-                {"file": "Charcoal/artwork_071.jpg", "caption": "\"The gaze\""},
-                {"file": "Charcoal/artwork_072.jpg", "caption": "Life study"},
-                {"file": "Charcoal/artwork_078.jpg", "caption": "\"Portrait study\""},
-                {"file": "Charcoal/artwork_079.jpg", "caption": "Figure drawing"},
-                {"file": "Charcoal/artwork_087.jpg", "caption": "\"Contemplation\""},
-                {"file": "Charcoal/artwork_110.jpg", "caption": "\"The musician\""},
-                {"file": "Charcoal/artwork_117.jpg", "caption": "Gesture study"},
-                {"file": "Charcoal/artwork_119.jpg", "caption": "\"Evening light\""},
-                {"file": "Charcoal/artwork_163.jpg", "caption": "\"The thinker\""},
-                {"file": "Charcoal/artwork_190.jpg", "caption": "Portrait practice"}
-            ],
-            "Digital": [
-                {"file": "Digital/artwork_047.jpg", "caption": "Digital portrait"},
-                {"file": "Digital/artwork_060.jpg", "caption": "\"Digital dreams\""},
-                {"file": "Digital/artwork_089.jpg", "caption": "Character design"},
-                {"file": "Digital/artwork_099.jpg", "caption": "\"Neon nights\""},
-                {"file": "Digital/artwork_127.jpg", "caption": "Digital illustration"},
-                {"file": "Digital/artwork_128.jpg", "caption": "\"Cyberpunk\""},
-                {"file": "Digital/artwork_130.jpg", "caption": "Concept art"},
-                {"file": "Digital/artwork_131.jpg", "caption": "\"The void\""},
-                {"file": "Digital/artwork_132.jpg", "caption": "Digital painting"},
-                {"file": "Digital/artwork_133.jpg", "caption": "\"Fragments\""},
-                {"file": "Digital/artwork_134.jpg", "caption": "Study in blue"},
-                {"file": "Digital/artwork_135.jpg", "caption": "\"Metamorphosis\""},
-                {"file": "Digital/artwork_136.jpg", "caption": "Digital sketch"},
-                {"file": "Digital/artwork_140.jpg", "caption": "\"The watcher\""},
-                {"file": "Digital/artwork_141.jpg", "caption": "Abstract digital"},
-                {"file": "Digital/artwork_144.jpg", "caption": "\"Ethereal\""},
-                {"file": "Digital/artwork_145.jpg", "caption": "Digital composition"},
-                {"file": "Digital/artwork_146.jpg", "caption": "\"Prism\""},
-                {"file": "Digital/artwork_147.jpg", "caption": "Digital portrait"},
-                {"file": "Digital/artwork_149.jpg", "caption": "\"The signal\""},
-                {"file": "Digital/artwork_151.jpg", "caption": "Digital landscape"},
-                {"file": "Digital/artwork_152.jpg", "caption": "\"Chromatic\""},
-                {"file": "Digital/artwork_153.jpg", "caption": "Study in color"},
-                {"file": "Digital/artwork_154.jpg", "caption": "\"Digital flora\""},
-                {"file": "Digital/artwork_155.jpg", "caption": "Abstract forms"},
-                {"file": "Digital/artwork_156.jpg", "caption": "\"The grid\""},
-                {"file": "Digital/artwork_158.jpg", "caption": "Digital experiment"},
-                {"file": "Digital/artwork_185.jpg", "caption": "\"Synthesis\""}
-            ],
-            "Ink": [
-                {"file": "Ink/artwork_046.jpg", "caption": "Ink study"},
-                {"file": "Ink/artwork_101.jpg", "caption": "\"The tree\""},
-                {"file": "Ink/artwork_121.jpg", "caption": "Ink on paper"},
-                {"file": "Ink/artwork_125.jpg", "caption": "\"Flow\""}
-            ],
-            "Mixed Media": [
-                {"file": "Mixed Media/artwork_077.jpg", "caption": "Mixed media experiment"},
-                {"file": "Mixed Media/artwork_111.jpg", "caption": "\"Collage\""}
-            ],
-            "Oil": [
-                {"file": "Oil/artwork_003.jpg", "caption": "Hope is wax becoming light, burning even as it disappears"},
-                {"file": "Oil/artwork_027.jpg", "caption": "\"Still life\""},
-                {"file": "Oil/artwork_032.jpg", "caption": "Oil study"},
-                {"file": "Oil/artwork_037.jpg", "caption": "\"The candle\""},
-                {"file": "Oil/artwork_052.jpg", "caption": "Plein air"},
-                {"file": "Oil/artwork_053.jpg", "caption": "\"Golden hour\""},
-                {"file": "Oil/artwork_166.jpg", "caption": "\"Remembrance\""}
-            ],
-            "Pastel": [
-                {"file": "Pastel/artwork_076.jpg", "caption": "Soft pastel study"}
-            ],
-            "Pen": [
-                {"file": "Pen/artwork_024.jpg", "caption": "Pen drawing"},
-                {"file": "Pen/artwork_057.jpg", "caption": "\"Fine lines\""},
-                {"file": "Pen/artwork_075.jpg", "caption": "Pen on paper"},
-                {"file": "Pen/artwork_081.jpg", "caption": "\"Details\""},
-                {"file": "Pen/artwork_083.jpg", "caption": "Cross-hatching study"},
-                {"file": "Pen/artwork_090.jpg", "caption": "\"The pen speaks\""}
-            ],
-            "Pencil": [
-                {"file": "Pencil/artwork_002.jpg", "caption": "\"Nritya\""},
-                {"file": "Pencil/artwork_010.jpg", "caption": "'Kokilame'"},
-                {"file": "Pencil/artwork_012.jpg", "caption": "Pencil sketch"},
-                {"file": "Pencil/artwork_013.jpg", "caption": "\"Study\""},
-                {"file": "Pencil/artwork_016.jpg", "caption": "Gesture drawing"},
-                {"file": "Pencil/artwork_019.jpg", "caption": "\"The dancer\""},
-                {"file": "Pencil/artwork_021.jpg", "caption": "Pencil portrait"},
-                {"file": "Pencil/artwork_029.jpg", "caption": "\"Contours\""},
-                {"file": "Pencil/artwork_030.jpg", "caption": "Still life sketch"},
-                {"file": "Pencil/artwork_035.jpg", "caption": "\"The face\""},
-                {"file": "Pencil/artwork_036.jpg", "caption": "Pencil study"},
-                {"file": "Pencil/artwork_038.jpg", "caption": "\"Hands\""},
-                {"file": "Pencil/artwork_040.jpg", "caption": "Life drawing"},
-                {"file": "Pencil/artwork_048.jpg", "caption": "\"Texture study\""},
-                {"file": "Pencil/artwork_050.jpg", "caption": "Quick sketch"},
-                {"file": "Pencil/artwork_051.jpg", "caption": "\"Movement\""},
-                {"file": "Pencil/artwork_055.jpg", "caption": "Pencil on paper"},
-                {"file": "Pencil/artwork_058.jpg", "caption": "\"Form\""},
-                {"file": "Pencil/artwork_084.jpg", "caption": "Portrait study"},
-                {"file": "Pencil/artwork_093.jpg", "caption": "\"Lines\""},
-                {"file": "Pencil/artwork_102.jpg", "caption": "Detailed sketch"},
-                {"file": "Pencil/artwork_104.jpg", "caption": "\"The window\""},
-                {"file": "Pencil/artwork_107.jpg", "caption": "Pencil rendering"},
-                {"file": "Pencil/artwork_116.jpg", "caption": "\"Shadows\""},
-                {"file": "Pencil/artwork_120.jpg", "caption": "Study in graphite"},
-                {"file": "Pencil/artwork_124.jpg", "caption": "\"The figure\""},
-                {"file": "Pencil/artwork_126.jpg", "caption": "Pencil portrait"},
-                {"file": "Pencil/artwork_137.jpg", "caption": "\"Expression\""},
-                {"file": "Pencil/artwork_138.jpg", "caption": "Sketchbook page"},
-                {"file": "Pencil/artwork_139.jpg", "caption": "\"Study in tone\""},
-                {"file": "Pencil/artwork_142.jpg", "caption": "Pencil sketch"},
-                {"file": "Pencil/artwork_143.jpg", "caption": "\"The eye\""},
-                {"file": "Pencil/artwork_150.jpg", "caption": "Freehand drawing"},
-                {"file": "Pencil/artwork_157.jpg", "caption": "\"Contour\""},
-                {"file": "Pencil/artwork_164.jpg", "caption": "Pencil on sketchbook"},
-                {"file": "Pencil/artwork_165.jpg", "caption": "\"The hand\""},
-                {"file": "Pencil/artwork_167.jpg", "caption": "Detail study"},
-                {"file": "Pencil/artwork_168.jpg", "caption": "\"Portrait\""},
-                {"file": "Pencil/artwork_169.jpg", "caption": "Graphite drawing"},
-                {"file": "Pencil/artwork_170.jpg", "caption": "\"Silence\""},
-                {"file": "Pencil/artwork_171.jpg", "caption": "Pencil rendering"},
-                {"file": "Pencil/artwork_172.jpg", "caption": "\"The pose\""},
-                {"file": "Pencil/artwork_173.jpg", "caption": "Sketch practice"},
-                {"file": "Pencil/artwork_174.jpg", "caption": "\"Light study\""},
-                {"file": "Pencil/artwork_175.jpg", "caption": "Pencil artwork"},
-                {"file": "Pencil/artwork_176.jpg", "caption": "\"Form and shadow\""},
-                {"file": "Pencil/artwork_177.jpg", "caption": "Drawing practice"},
-                {"file": "Pencil/artwork_178.jpg", "caption": "\"The sketch\""},
-                {"file": "Pencil/artwork_179.jpg", "caption": "Pencil study"},
-                {"file": "Pencil/artwork_180.jpg", "caption": "\"Lines and curves\""},
-                {"file": "Pencil/artwork_181.jpg", "caption": "Portrait sketch"},
-                {"file": "Pencil/artwork_182.jpg", "caption": "\"Gesture\""},
-                {"file": "Pencil/artwork_183.jpg", "caption": "Pencil on paper"},
-                {"file": "Pencil/artwork_187.jpg", "caption": "\"The study\""},
-                {"file": "Pencil/artwork_188.jpg", "caption": "Detailed drawing"},
-                {"file": "Pencil/artwork_189.jpg", "caption": "\"Face\""},
-                {"file": "Pencil/artwork_191.jpg", "caption": "Pencil portrait"},
-                {"file": "Pencil/artwork_192.jpg", "caption": "\"Shading practice\""},
-                {"file": "Pencil/artwork_195.jpg", "caption": "Final study"}
-            ],
-            "Photography": [
-                {"file": "Photography/artwork_044.jpg", "caption": "Through the lens"},
-                {"file": "Photography/artwork_056.jpg", "caption": "\"Light capture\""}
-            ],
-            "Watercolor": [
-                {"file": "Watercolor/artwork_091.jpg", "caption": "Wash study"},
-                {"file": "Watercolor/artwork_096.jpg", "caption": "\"Bloom\""},
-                {"file": "Watercolor/artwork_098.jpg", "caption": "Watercolor landscape"},
-                {"file": "Watercolor/artwork_100.jpg", "caption": "\"Wet on wet\""},
-                {"file": "Watercolor/artwork_103.jpg", "caption": "Color study"},
-                {"file": "Watercolor/artwork_109.jpg", "caption": "\"The garden\""},
-                {"file": "Watercolor/artwork_113.jpg", "caption": "Floral watercolor"},
-                {"file": "Watercolor/artwork_114.jpg", "caption": "\"Sky study\""},
-                {"file": "Watercolor/artwork_118.jpg", "caption": "Watercolor on paper"},
-                {"file": "Watercolor/artwork_160.jpg", "caption": "\"Abstract wash\""},
-                {"file": "Watercolor/artwork_161.jpg", "caption": "Color exploration"},
-                {"file": "Watercolor/artwork_162.jpg", "caption": "\"The pond\""},
-                {"file": "Watercolor/artwork_184.jpg", "caption": "Watercolor sketch"},
-                {"file": "Watercolor/artwork_193.jpg", "caption": "\"Rain\""},
-                {"file": "Watercolor/artwork_194.jpg", "caption": "Atmospheric study"}
-            ],
-            "Other": [
-                {"file": "Other/artwork_005.jpg", "caption": "#happynewyear2025"},
-                {"file": "Other/artwork_011.jpg", "caption": "Experimental piece"},
-                {"file": "Other/artwork_015.jpg", "caption": "New medium exploration"},
-                {"file": "Other/artwork_017.jpg", "caption": "Abstract composition"},
-                {"file": "Other/artwork_020.jpg", "caption": "Mixed materials"},
-                {"file": "Other/artwork_022.jpg", "caption": "Color experiment"},
-                {"file": "Other/artwork_023.jpg", "caption": "Study in texture"},
-                {"file": "Other/artwork_025.jpg", "caption": "Creative exploration"},
-                {"file": "Other/artwork_028.jpg", "caption": "Mixed technique"},
-                {"file": "Other/artwork_042.jpg", "caption": "Experimental art"},
-                {"file": "Other/artwork_045.jpg", "caption": "Visual study"},
-                {"file": "Other/artwork_059.jpg", "caption": "Abstract expression"},
-                {"file": "Other/artwork_061.jpg", "caption": "Material exploration"},
-                {"file": "Other/artwork_063.jpg", "caption": "Color and form"},
-                {"file": "Other/artwork_064.jpg", "caption": "Mixed technique"},
-                {"file": "Other/artwork_066.jpg", "caption": "Study in composition"},
-                {"file": "Other/artwork_067.jpg", "caption": "Creative process"},
-                {"file": "Other/artwork_069.jpg", "caption": "Experimental"},
-                {"file": "Other/artwork_070.jpg", "caption": "Art exploration"},
-                {"file": "Other/artwork_073.jpg", "caption": "Mixed media"},
-                {"file": "Other/artwork_074.jpg", "caption": "Study"},
-                {"file": "Other/artwork_080.jpg", "caption": "Visual experiment"},
-                {"file": "Other/artwork_082.jpg", "caption": "Creative study"},
-                {"file": "Other/artwork_085.jpg", "caption": "Abstract art"},
-                {"file": "Other/artwork_086.jpg", "caption": "Mixed approach"},
-                {"file": "Other/artwork_088.jpg", "caption": "Technique study"},
-                {"file": "Other/artwork_092.jpg", "caption": "Art practice"},
-                {"file": "Other/artwork_094.jpg", "caption": "Composition"},
-                {"file": "Other/artwork_095.jpg", "caption": "Study in form"},
-                {"file": "Other/artwork_097.jpg", "caption": "Creative work"},
-                {"file": "Other/artwork_105.jpg", "caption": "Mixed medium"},
-                {"file": "Other/artwork_106.jpg", "caption": "Visual art"},
-                {"file": "Other/artwork_108.jpg", "caption": "Study"},
-                {"file": "Other/artwork_112.jpg", "caption": "Experimental piece"},
-                {"file": "Other/artwork_115.jpg", "caption": "Art study"},
-                {"file": "Other/artwork_122.jpg", "caption": "Mixed technique"},
-                {"file": "Other/artwork_123.jpg", "caption": "Creative expression"},
-                {"file": "Other/artwork_129.jpg", "caption": "Abstract study"},
-                {"file": "Other/artwork_148.jpg", "caption": "Visual exploration"},
-                {"file": "Other/artwork_159.jpg", "caption": "Mixed materials"},
-                {"file": "Other/artwork_186.jpg", "caption": "Art experiment"},
-                {"file": "Other/artwork_196.jpg", "caption": "Study in color"},
-                {"file": "Other/artwork_197.jpg", "caption": "Creative piece"},
-                {"file": "Other/artwork_198.jpg", "caption": "Mixed approach"},
-                {"file": "Other/artwork_199.jpg", "caption": "Abstract"},
-                {"file": "Other/artwork_200.jpg", "caption": "Visual study"},
-                {"file": "Other/artwork_201.jpg", "caption": "Mixed art"},
-                {"file": "Other/artwork_202.jpg", "caption": "Creative study"},
-                {"file": "Other/artwork_203.jpg", "caption": "Final piece"}
-            ]
-        };
+<div class="lb" id="lb" aria-modal="true" role="dialog">
+  <div class="lb-stage">
+    <div class="lb-top">
+      <span class="lb-count" id="lb-count">1 / 203</span>
+      <span class="lb-med" id="lb-med">Pencil</span>
+      <button class="lb-close" id="lb-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="lb-fig">
+      <img class="lb-img" id="lb-img" src="" alt="">
+      <div class="lb-cap">
+        <h3 id="lb-title"></h3>
+        <p class="det" id="lb-det"></p>
+        <p class="med" id="lb-med2"></p>
+        <a class="lb-inquire" id="lb-inquire" href="#">Inquire about this piece</a>
+      </div>
+    </div>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div class="lb-mediums" id="lb-mediums"></div>
+    <div class="lb-hint">← → images · ↑ ↓ mediums · esc close</div>
+  </div>
+</div>
 
-        // Flatten all artworks into a single array for lightbox navigation
-        let allArtworks = [];
-        let currentFilter = 'all';
+<script>
+'use strict';
 
-        function flattenArtworks(filter) {
-            const items = [];
-            const mediums = filter === 'all' ? Object.keys(ARTWORKS_DATA) : [filter];
-            mediums.forEach(medium => {
-                ARTWORKS_DATA[medium].forEach(item => {
-                    items.push({
-                        ...item,
-                        medium: medium
-                    });
-                });
-            });
-            return items;
-        }
+/* ---- data (injected: real captions from studio archive) ---- */
+const ITEMS = [{"f":"Acrylic/artwork_001.jpg","m":"Acrylic","t":"Golden Beak","d":"Scarlett macaw · acrylic on canvas · 8\"x6","n":1},{"f":"Pencil/artwork_002.jpg","m":"Pencil","t":"Nritya","d":"Freehand colour pencil scribbles on A5 grey sketch book · Getting back into the groove after a long break","n":2},{"f":"Oil/artwork_003.jpg","m":"Oil","t":"Hope is wax becoming light, burning even as it disappears","d":"Oil on canvas , 6x8","n":3},{"f":"Charcoal/artwork_004.jpg","m":"Charcoal","t":"Charcoal on paper, A5","d":"","n":4},{"f":"Other/artwork_005.jpg","m":"Other","t":"#happynewyear2025","d":"","n":5},{"f":"Acrylic/artwork_006.jpg","m":"Acrylic","t":"Light of devotion","d":"Acrylic on canvas 8\"x8\" · Sometimes unplanned things lead to surprising results · Be it travel or activities","n":6},{"f":"Charcoal/artwork_007.jpg","m":"Charcoal","t":"shimmered grace","d":"Charcoal drawing on paper 12\"x12\" · Really interesting to study the behaviour of light · Looking forward to studying more on this subject","n":7},{"f":"Charcoal/artwork_008.jpg","m":"Charcoal","t":"Reverie","d":"Charcoal on paper · Late nate is the best time to draw I guess.","n":8},{"f":"Acrylic/artwork_009.jpg","m":"Acrylic","t":"Late night quick paint","d":"Acrylic on paper · \"Capturing the grace and timeless beauty of traditional elegance. Each brushstroke tells a story of heritage and strength. #Artist…","n":9},{"f":"Pencil/artwork_010.jpg","m":"Pencil","t":"Kokilame","d":"Colour pencil drawing on A5 sketch book · Just brushing up the skills","n":10},{"f":"Other/artwork_011.jpg","m":"Other","t":"sundari\"- Capturing the timeless grace and silent strength of a…","d":"Graphite on A4 sketch book","n":11},{"f":"Pencil/artwork_012.jpg","m":"Pencil","t":"Apsara","d":"Monochrome on A5 sketch book","n":12},{"f":"Pencil/artwork_013.jpg","m":"Pencil","t":"Experiment. Colour pencil on toned paper","d":"Really interesting results. · What do you think I should draw next? · The process of selecting subjects takes longer than painting itself","n":13},{"f":"Charcoal/artwork_014.jpg","m":"Charcoal","t":"Yali","d":"A3 Charcoal on paper · Painted this for the @tobuovimaan art exhibition on south indian culture · A mythical creature mostly seen in the form of a st…","n":14},{"f":"Other/artwork_015.jpg","m":"Other","t":"Desolate","d":"","n":15},{"f":"Pencil/artwork_016.jpg","m":"Pencil","t":"The quieter you become, the more you can hear","d":"Late night drawing · Budha on A5 sketch book, graphite on paper","n":16},{"f":"Other/artwork_017.jpg","m":"Other","t":"Graphite sketch on A5 sketch book","d":"Random muse from Pinterest · Always relaxing to draw with graphite","n":17},{"f":"Charcoal/artwork_018.jpg","m":"Charcoal","t":"Me confirming I'm still alive and active","d":"By posting artwork after more than a month · Charcoal on paper","n":18},{"f":"Pencil/artwork_019.jpg","m":"Pencil","t":"Red, An artist's fervent delight","d":"Mixed media, graphite and colour pencil on A5 sketch book. · Having major artblocks lately. · Trying to find motivation to paint.","n":19},{"f":"Other/artwork_020.jpg","m":"Other","t":"Jungkook suggested by @abcdefghijkl__opqrstuvwxy","d":"Graphite on a5 sketch book · Any BTS fans out there ?","n":20},{"f":"Pencil/artwork_021.jpg","m":"Pencil","t":"Harry styles suggested by @divya_dayal01","d":"Monochrome magenta on a4 paper · @hshq","n":21},{"f":"Other/artwork_022.jpg","m":"Other","t":"Silk Smitha suggested by @mr.sk_18","d":"Graphite on A5 sketch book · This is a textured paper, that's y the grainy texture. Loved working on it · Keep the suggestions coming.","n":22},{"f":"Other/artwork_023.jpg","m":"Other","t":"Dr.vishnuvardhan suggested by @im_lk_hn","d":"Portrait study on grey tonned sketch book · More celebs drawings on the way · Comment your favourite celeb to draw","n":23},{"f":"Pen/artwork_024.jpg","m":"Pen","t":"Verdant vines","d":"Fine line pen on paper · Trying something new… · Just started with a normal profile drawing then just improvised on the go…","n":24},{"f":"Other/artwork_025.jpg","m":"Other","t":"Green","d":"Monochromatic portrait study · On A5 sketchbook","n":25},{"f":"Charcoal/artwork_026.jpg","m":"Charcoal","t":"Charcoal freestyle portrait study","d":"ON A4 sketch book · Used multiple charcoal mediums · Charcoal sticks, compressed charcoal charcoal, charcoal crayon and charcoal pencil.","n":26},{"f":"Oil/artwork_027.jpg","m":"Oil","t":"Late night oil painting portrait study","d":"","n":27},{"f":"Other/artwork_028.jpg","m":"Other","t":"Portrait study on grey toned payper","d":"Highlight and contrast really bring the sketch to life..","n":28},{"f":"Pencil/artwork_029.jpg","m":"Pencil","t":"Reaching out","d":"Scribble art perspective study · On A5 sketchbook","n":29},{"f":"Pencil/artwork_030.jpg","m":"Pencil","t":"Colour pencil portrait study","d":"On A5 sketch book · Ref credit - @maanasa.choudhary1","n":30},{"f":"Charcoal/artwork_031.jpg","m":"Charcoal","t":"Reflect","d":"Charcoal portrait study on grey toned sketch book · Just studying different values in toned paper…","n":31},{"f":"Oil/artwork_032.jpg","m":"Oil","t":"Oil on canvas","d":"Warmup painting · Doing some oil paint orders · So warming up before the work","n":32},{"f":"Acrylic/artwork_033.jpg","m":"Acrylic","t":"Panjurli daiva from kantara","d":"Suggested by @iam_sriki_ · Freestyle acrylic on paper.. · Didn't take much time for this so the details are kinda vague..","n":33},{"f":"Charcoal/artwork_034.jpg","m":"Charcoal","t":"Emotional eye(s)","d":"Suggested by @krishnavenipallapothu · Charcoal painting on paper..","n":34},{"f":"Pencil/artwork_035.jpg","m":"Pencil","t":"Lady with face with the snakes\" Suggested by @mr.sk_18 .","d":"Doing this instead of year end challenge… · Keep suggesting ideas in comments and dms…","n":35},{"f":"Pencil/artwork_036.jpg","m":"Pencil","t":"Her -","d":"@anupamaparameswaran96 colour pencil sketch on A5 sketch book · I know I draw her a lot. But can't resist. So many beautiful references. · I have bee…","n":36},{"f":"Oil/artwork_037.jpg","m":"Oil","t":"Felt a bit free today","d":"Did some monochrome gesture sketch. · More like warm up before some big painting. · Gonna work with oil paint after a while… Stay tuned","n":37},{"f":"Pencil/artwork_038.jpg","m":"Pencil","t":"Drawing hair brings me inner peace","d":"Graphite sketch on A5 sketchbook · It's been a while being active painting stuff for my Instagram. · I'm thinking of a series of themed painting (kin…","n":38},{"f":"Acrylic/artwork_039.jpg","m":"Acrylic","t":"BLUE","d":"Acrylic on canvas. 10x12 · Posting something after ages.. · Well most of you might already know about the mishap during this painting..","n":39},{"f":"Pencil/artwork_040.jpg","m":"Pencil","t":"CRIMSON","d":"Profile portrait study · Freehand sketch on A5 sketchbook · Graphite with colour pencil","n":40},{"f":"Acrylic/artwork_041.jpg","m":"Acrylic","t":"3D Flower painting acrylic and modelling paste","d":"20\" X 40\" Stretched canvas · One of an unique order I got recently… · The only way u can find out if you are good at is to actually do it..","n":41},{"f":"Other/artwork_042.jpg","m":"Other","t":"Typography portrait.","d":"@marcusrashford · One of the unique custom order I got all the way from UK. · I had never tried this before and was a bit worried about how it would…","n":42},{"f":"Acrylic/artwork_043.jpg","m":"Acrylic","t":"Ganesha chaturthi special","d":"Acrylic on canvas. · Not a perfect finish but still happy with the process and result. · .","n":43},{"f":"Photography/artwork_044.jpg","m":"Photography","t":"Soft pastel portrait…","d":"The quality looks better in photos than the timelapse videos. · .","n":44},{"f":"Other/artwork_045.jpg","m":"Other","t":"Line art full body and textile study..","d":"Need more refining and adjustment · Pic reference credit: @ritika_offl · What are your thoughts?","n":45},{"f":"Ink/artwork_046.jpg","m":"Ink","t":"Monochrome sketch of Scarlett witch aka wanda maximoff.. #eliza…","d":"Finally some art on #wandavision · I really get conflicted over what to draw and what medium yo use.. · Most of the time is wasted on thinking this s…","n":46},{"f":"Digital/artwork_047.jpg","m":"Digital","t":"Concept \"sparrow","d":"Digital painting after a long time… · Trying new style with surrealism.. · Reference courtesy: @thejashwini_br","n":47},{"f":"Pencil/artwork_048.jpg","m":"Pencil","t":"Nowadays weather be like","d":"Colour pencil sketch after so long… · I'm still worthy · Nowadays I get confused with what medium to use more than what to draw.","n":48},{"f":"Charcoal/artwork_049.jpg","m":"Charcoal","t":"Lion charcoal sketch","d":"On a3 paper · When I started drawing for serious I used to hate to draw the hair part. But after learning the proper technique hair /fur is my favori…","n":49},{"f":"Pencil/artwork_050.jpg","m":"Pencil","t":"Graphite sketch on a5 sketch book","d":"Textile and light study. · Random pic from Pinterest. · .","n":50},{"f":"Pencil/artwork_051.jpg","m":"Pencil","t":"Happy world art day..","d":"Just finished up with my big piece · Wanted to do some quick sketch.. · Graphite on my A5 sketch book","n":51},{"f":"Oil/artwork_052.jpg","m":"Oil","t":"Commissioned watercolor landscape of #istanbul #turkey","d":"From @itsanjumara · I rarely do landscape, and was kinda nervous after taking the order. But really happy with the results. · And I expanded my terri…","n":52},{"f":"Oil/artwork_053.jpg","m":"Oil","t":"Spiritual","d":"My first oil on canvas.. · On 10\" X 12\" Canvas · So I officially enter the painting league…","n":53},{"f":"Charcoal/artwork_054.jpg","m":"Charcoal","t":"Happy women's day to all the super women out there. I just want…","d":"Keep shining.. Not just today but forever.. · Charcoal sketch on my a4 sketch book · Planned a totally different idea but didn't have the time, so ov…","n":54},{"f":"Pencil/artwork_055.jpg","m":"Pencil","t":"Sunkissed","d":"Random weekend sketch on a5 sketchbook · Just chose a random reference from pinterest and sketched.. · Did some modifications..","n":55},{"f":"Photography/artwork_056.jpg","m":"Photography","t":"@anupamaparameswaran96 graphite sketch..","d":"Free hand style sketching on a5 sketchbook.. · Loved the photo since day one · This is my 3rd sketch of her…","n":56},{"f":"Pen/artwork_057.jpg","m":"Pen","t":"Something to relax with….","d":"Quick line portrait · Been busy with commissions · Needed some break with usual medium…","n":57},{"f":"Pencil/artwork_058.jpg","m":"Pencil","t":"The golden trio","d":"Colour pencil sketch after long time · Ronald Weasly @rupertgrint Harry Potter #danielradcliff Hermione Granger @emmawatson · Still one of my favorit…","n":58},{"f":"Other/artwork_059.jpg","m":"Other","t":"Happy sunday ppl","d":"Trying something not my usual type. · Don't ask me who is she.. · Some random model from Pinterest..","n":59},{"f":"Digital/artwork_060.jpg","m":"Digital","t":"celestial","d":"Just some basic digital work · Warm up after a while and not a portrait.. · Whats ur opinion about this.","n":60},{"f":"Other/artwork_061.jpg","m":"Other","t":"Day 30 #31daychallenge","d":"Monocbrome sketch on a5 sketchbook · I was supposed to upload this yesterday · But due to technical difficulties in my phone , couldn't do it..","n":61},{"f":"Charcoal/artwork_062.jpg","m":"Charcoal","t":"Day 29 #31daychallenge","d":"@samantharuthprabhuoffl suggested by @adroit_meghana · Charcoal sketch on a5 sketchbook · My phone fell and got injured","n":62},{"f":"Other/artwork_063.jpg","m":"Other","t":"Day 28 #31daychallenge","d":"@shaheernsheikh suggested by @sandhya_bhaskaran_v · Graphites sketch on a5 sketchbook · After the challenge is completed I'll do a live sketchbook to…","n":63},{"f":"Other/artwork_064.jpg","m":"Other","t":"Day 27 #31daychallenge","d":"@thedeverakonda suggested by @makeupbyzeenath · Monochrome blue sketch in a5 sketch book · Literally got this suggestion today..","n":64},{"f":"Charcoal/artwork_065.jpg","m":"Charcoal","t":"Day 26 #31daychallenge","d":"@canyaman suggested by @itsanjumara · Charcoal sketch on a5 sketch book · Doing second suggestions now..","n":65},{"f":"Other/artwork_066.jpg","m":"Other","t":"Day 25 #31daychallenge","d":"@iamsrk suggested by @prem_bond07 · Graphite sketch on a5 sketchbook · Took exactly 1 hour for this..","n":66},{"f":"Other/artwork_067.jpg","m":"Other","t":"Day 24 #31daychallenge","d":"@beatking_sumedh as #krishna suggested by @65kavya · Monochrome sketch on a5 sketchbook · Relatively complicated sketch so far in this challenge..","n":67},{"f":"Charcoal/artwork_068.jpg","m":"Charcoal","t":"Day 23 #31daychallenge","d":"@actorleeminho suggested by @k_a_v_y_a_nl · Charcoal sketch in a5 sketchbook.. · Almost skipped quota todaY…","n":68},{"f":"Other/artwork_069.jpg","m":"Other","t":"Day 22 #31daychallenge","d":"Iron lady of india · Graphite sketch on a5 sketchbook. · .","n":69},{"f":"Other/artwork_070.jpg","m":"Other","t":"Day 21 #31daychallenge","d":"@kichchasudeepa suggested by @shekhar.vasishta · Monochrome dark brown sketch.. · 10 more days to go…","n":70},{"f":"Charcoal/artwork_071.jpg","m":"Charcoal","t":"Day 19 #31daychallenge","d":"@akshaykumar suggested by @harish.muniveerappa · Charcoal portrait in a5 sketchbook. · Did it on a live session today..","n":71},{"f":"Charcoal/artwork_072.jpg","m":"Charcoal","t":"Day 17 #31daychallenge","d":"@rashmika_mandanna suggested by @dev_art555 · 35 min sketch tried some mixec media · Charcoal hair and graphite face..","n":72},{"f":"Other/artwork_073.jpg","m":"Other","t":"Day 16 #31daychallenge","d":"Portrait from one of my fav movie in kannada.. · We're half way through the challenge going good … · .","n":73},{"f":"Other/artwork_074.jpg","m":"Other","t":"Day 15 #31daychallenge","d":"@alluarjunonline suggested by @adroit_meghana · Monochrome orange portrait on a5 sketchbook · But hard to capture depth with this bright colour…","n":74},{"f":"Pen/artwork_075.jpg","m":"Pen","t":"Day 13 #31daychallenge","d":"Be dependent on yourself , and know that courage has to be born within you. It takes time but you have to work for it.\" · Another graphite sketch. ·…","n":75},{"f":"Pastel/artwork_076.jpg","m":"Pastel","t":"Day 12 #31daychallenge","d":"Birthday special @rajinikanth · Happy birthday to one and only superstar … · And behold my first soft pastel portrait..","n":76},{"f":"Mixed Media/artwork_077.jpg","m":"Mixed Media","t":"Day 11 #31daychallenge","d":"@actorsuriya suggested by @harshinishree27 . · Thought of doing mixed colour · But ended up with graphite..","n":77},{"f":"Charcoal/artwork_078.jpg","m":"Charcoal","t":"Day 10 #31daychallenge","d":"@rahulkl suggested by @niveditha_nivya · Another charcoal sketch.. · Took some time to smudge but still left the grainy texture…","n":78},{"f":"Charcoal/artwork_079.jpg","m":"Charcoal","t":"Day 9 #31daychallenge","d":"@nameisnani suggested by @sahana_anya · Another monochrome work · Not doing digital media for this challenge.. and can't do detailed color pencil wor…","n":79},{"f":"Other/artwork_080.jpg","m":"Other","t":"Day 8 #31daychallenge","d":"I love his facial expressions … · So wanted to try out one.. · Graphite sketch on a5 sketchbook","n":80},{"f":"Pen/artwork_081.jpg","m":"Pen","t":"Day 7 #31daychallenge","d":"Ink pen drawing using line hatching and crosshatching technique.. · Added some extra lines in the mid tone than required and now it looks like wrinkl…","n":81},{"f":"Other/artwork_082.jpg","m":"Other","t":"Day 6 #31daychallenge","d":"Monochrome red sketch.. · The hardest part of any portrait is getting a good reference.. · Really frustrating..","n":82},{"f":"Pen/artwork_083.jpg","m":"Pen","t":"Day 3 #31daychallenge","d":"Portrait of @anushkashettyofficial suggested by @de_ep_ak_ku_ma_r @adroit_meghana @_mr.samar · Stippling method after a while · Technically started t…","n":83},{"f":"Pencil/artwork_084.jpg","m":"Pencil","t":"Day 2 #31daychallenge","d":"Portrait of @tomcruise suggested by @arshath_ak23 · Monocrome sketch on a5 sketchbook · 30 min sketch the hard part was getting the proportions right…","n":84},{"f":"Other/artwork_085.jpg","m":"Other","t":"Day 1 #31daychallenge","d":"Portrait of @msjennafischer · Suggested by @fardinpasha2005 · Took about 45 min graphite sketch","n":85},{"f":"Other/artwork_086.jpg","m":"Other","t":"its leviosa not leviosaa","d":"Graphite sketch of @emmawatson · In my new A5 brustro sketchbook · Beautiful first page","n":86},{"f":"Charcoal/artwork_087.jpg","m":"Charcoal","t":"Black stallion","d":"Charcoal work after a while… · On A3 130 gsm paper · Apologies for the poor quality","n":87},{"f":"Other/artwork_088.jpg","m":"Other","t":"@actorsuriya #sooraraipottru","d":"Monocrome sketch of soorarai potru poster · Really excited for this movie · A bold move releasing a big budget movie on OTT platform.","n":88},{"f":"Digital/artwork_089.jpg","m":"Digital","t":"A medieval indian soldier..","d":"Out of my thoughts concept art.. · My second character design · And the first art with my brand new graphics tablet (huion HS610).","n":89},{"f":"Pen/artwork_090.jpg","m":"Pen","t":"Another line work","d":"Second try… · Still some flaws here and there… · Will improve in next time","n":90},{"f":"Watercolor/artwork_091.jpg","m":"Watercolor","t":"Water colour painting of RCB team…on a3 size 300 gsm watercolor…","d":"My favorite ipl team · Wasn't sure if i could finish it · Watercolor is really harf to control especially for the smaller faces..Even 000 pointed bru…","n":91},{"f":"Other/artwork_092.jpg","m":"Other","t":"Untitled No. 92","d":"","n":92},{"f":"Pencil/artwork_093.jpg","m":"Pencil","t":"They may kill me, but they cannot kill my ideas. They can crush…","d":"Let's remember Shaheed Bhagat Singh Ji's bravery on his birth anniversary · Kinda late post","n":93},{"f":"Other/artwork_094.jpg","m":"Other","t":"@ispbofficial","d":"A great loss for indian film industry. One of the greatest playback singer of all time in multiple languages and entertained multiple generations. I…","n":94},{"f":"Other/artwork_095.jpg","m":"Other","t":"Tried something new","d":"A little experiment on art using just lines… · Not as good as expected… · But got some insights on how it works…","n":95},{"f":"Watercolor/artwork_096.jpg","m":"Watercolor","t":"Scary tiger not because of claws and fangs, but scary because o…","d":"In love with water colour process..","n":96},{"f":"Other/artwork_097.jpg","m":"Other","t":"Wakanda will live forever in our hearts because of this man…","d":"And so shall the king.. · May your soul find peace · @chadwickboseman","n":97},{"f":"Watercolor/artwork_098.jpg","m":"Watercolor","t":"My first water colour portrait of @sushantsinghrajput ..","d":"Finally finished this long awaited painting.. · I'm Happy how it turned out.. · Would have been nice if he was here to see this.","n":98},{"f":"Digital/artwork_099.jpg","m":"Digital","t":"Princess on a hunt","d":"Probably my first formal concept art… · Learning some anatomy and digital painting for more concept art and character design… · But its too difficult…","n":99},{"f":"Watercolor/artwork_100.jpg","m":"Watercolor","t":"Water colour painting of","d":"Iskcon temple bangalore… · Since we are all stuck inside… · And water colour is so hard to master the techniques..","n":100},{"f":"Ink/artwork_101.jpg","m":"Ink","t":"Happy birthday #ilayathalapathy vijay","d":"Even though this method is much harder , i love the process.. · Been kinda busy lately , so not able to upload frequently.. · Will try to do a challe…","n":101},{"f":"Pencil/artwork_102.jpg","m":"Pencil","t":"I'm a slow learner, its true. But i learn","d":"Monochrome sketch of sansa stark @sophiet. · Monochrome colourpencil are best to practice preasure control.. · Which determines the depth of an image…","n":102},{"f":"Watercolor/artwork_103.jpg","m":"Watercolor","t":"I shall call it","d":"The 12th platform\" · For all the people who bas been stuck indoor, but wanna get out explore somewhere, i hope this suffice. · I'm still figuring out…","n":103},{"f":"Pencil/artwork_104.jpg","m":"Pencil","t":"I'm always angry","d":"Anyone else like this look of hulk from Thor ragnarok · I just loved it.. I'm glad they bought in the planet hulk story line and made us experience t…","n":104},{"f":"Other/artwork_105.jpg","m":"Other","t":"Pointillism art of @rashmika_mandanna","d":"Tag her in the comments till it reaches her · Really worked hard on this · Most of y'all liked this style And i wanted to practice more of this..","n":105},{"f":"Other/artwork_106.jpg","m":"Other","t":"One more #strippleart","d":"Of @anupamaparameswaran96 Not perfect(like her) but i guess i impoved from last time.. and will continue to improve · Share this as much as possible…","n":106},{"f":"Pencil/artwork_107.jpg","m":"Pencil","t":"Happy birthday thala #ajithkumar","d":"Man of many talents.. · Wanted to do something in colour after a while.. · Who to sketch other than the one and only #thala on his birthday..","n":107},{"f":"Other/artwork_108.jpg","m":"Other","t":"Here's a stripple art of @deepikapadukone","d":"This style is also called pointillism.. · Art with just dots · This one may contain aprrox. 100000 dots.(rough estimate)","n":108},{"f":"Watercolor/artwork_109.jpg","m":"Watercolor","t":"Elephant water colour painting","d":"Its just relaxing to work with water colour. · More than result loved the process.. · What do u think about this painting?","n":109},{"f":"Charcoal/artwork_110.jpg","m":"Charcoal","t":"Honorable prime minister of india @narendramodi","d":"Charcoal drawings are really hard to work with.. · But gives the best result. · Do u like it..?","n":110},{"f":"Mixed Media/artwork_111.jpg","m":"Mixed Media","t":"KRATOS - God of war graphite sketch.","d":"On 110 gsm a4 sketchbook. · Watch the time lapse video. · Link in bio","n":111},{"f":"Other/artwork_112.jpg","m":"Other","t":"Its important to learn and not repeat the same mistakes. Whats…","d":"Captain cool @mahi7781 graphite sketch · Almost overnight sketch.. · .","n":112},{"f":"Watercolor/artwork_113.jpg","m":"Watercolor","t":"Quarantine painting","d":"Not my usual type of painting · Tried something different. · Heres my first try in painting a flower.","n":113},{"f":"Watercolor/artwork_114.jpg","m":"Watercolor","t":"Golden headed tanager","d":"Reference from @sudhirshivaram · Lockdown painting. · What are you doing in your lock down","n":114},{"f":"Other/artwork_115.jpg","m":"Other","t":"Two things i love drawing the most","d":"1.Hair · 2. Khaleesi · Can never get enough of these","n":115},{"f":"Pencil/artwork_116.jpg","m":"Pencil","t":"STAY SAFE","d":"CORONA/COVID-19 · Art inspired by @adamelmahjoub · The mighty world falling before pandemic of a tiny virus. Sounds almost unrealistic. So many peopl…","n":116},{"f":"Charcoal/artwork_117.jpg","m":"Charcoal","t":"Oru kadha sollatuma sir","d":"Charcoal sketch of @actorvijaysethupathi · My favorite actor. And the look from one of my favorite tamil movie #vikramvedha · Actually I'm sick for a…","n":117},{"f":"Watercolor/artwork_118.jpg","m":"Watercolor","t":"To all the warriors out there - Happy womens day.","d":"I don't have any fancy quotes for this, cus all the women out there know how much i love and respect them. · Starting from my mom there have been so…","n":118},{"f":"Charcoal/artwork_119.jpg","m":"Charcoal","t":"people throw stones at you, and Convert them into milestones","d":"Charcoal sketch of #godofcricket @sachintendulkar on an 130 gsm a4 paper · U might not be a big cricket fan, but u will definitely are aware of this…","n":119},{"f":"Pencil/artwork_120.jpg","m":"Pencil","t":"My first of the year/decade…","d":"My favorite and one of the most badass television character # aryastark @maisie_williams · Actually no one · 2019 has been a great year for me….","n":120},{"f":"Ink/artwork_121.jpg","m":"Ink","t":"Day 50 #50daychallenge","d":"Sketch of #nayanthara · My all time favorite actress · A sketch on toned paper..","n":121},{"f":"Other/artwork_122.jpg","m":"Other","t":"Day 49 #50daychallenge","d":"The legendary bruce lee sketch… · The man who defied all human boundaries…in terms of physical attributes and broke the stereotypes.. · The legend wh…","n":122},{"f":"Other/artwork_123.jpg","m":"Other","t":"Day 48 #50daychallenge","d":"Happy birthday @beingsalmankhan · A man with a good personality, charisma and attitude. I personally know so many people who are huge fan of salman k…","n":123},{"f":"Pencil/artwork_124.jpg","m":"Pencil","t":"Day 45 #50daychallenge","d":"Just an eye.. · Just a 5 min sketch of an eye from imagination… · Eyes have always been my favorite things to draw..","n":124},{"f":"Ink/artwork_125.jpg","m":"Ink","t":"Day 43 #50daychallenge","d":"Bald eagle sketch · I think I'm figuring out my own style or styles … · It sounds good having a versatile artworks","n":125},{"f":"Pencil/artwork_126.jpg","m":"Pencil","t":"Day 42 #50daychallenge","d":"Happy birthday @tamannaahspeaks · One of the gorgeous and talented milky beauty… · I know its not perfect.. but still i like the results","n":126},{"f":"Digital/artwork_127.jpg","m":"Digital","t":"Day 41 #50daychallenge","d":"Jon snow #kitharington sketch · How many game of thrones fans here…. · Ignore the ending but the wholes show was awesome…","n":127},{"f":"Digital/artwork_128.jpg","m":"Digital","t":"Day 40 #50daychallenge","d":"Black drongo picture reference from @varun.chidambaram · Had migraine in the morning · Couldn't focus on anything","n":128},{"f":"Other/artwork_129.jpg","m":"Other","t":"Day 38 #50daychallenge","d":"Joaquin phoenix's the #joker suggested by @divyahon · Maybe late to the trend · But finally did it","n":129},{"f":"Digital/artwork_130.jpg","m":"Digital","t":"Day 37 #50daychallenge","d":"Baby yoda sketch · How many of u watched the mandalorian show… · Its awesome…treat for all starwars fans","n":130},{"f":"Digital/artwork_131.jpg","m":"Digital","t":"Day 35 #50daychallenge","d":"A cat reference by @itsanjumara · Modelling by anjum's cat · I'm missing my cat.. which is a sibling of this one..","n":131},{"f":"Digital/artwork_132.jpg","m":"Digital","t":"Day 33 #50daychallenge","d":"Happy birthday thalaiva @rajinikanth .. · The one and only #superstar · 69 years old still looks young and energetic…","n":132},{"f":"Digital/artwork_133.jpg","m":"Digital","t":"Day 30 #50daychallenge","d":"Father son concept by @divya3dk · Father is the first super hero and role model of a son. And a son is a promise that a father will always have a fri…","n":133},{"f":"Digital/artwork_134.jpg","m":"Digital","t":"Day 29 #50daychallenge","d":"Tiger digital sketch · photo reference from @varun.chidambaram · Check out his profile for amazing wildlife photography","n":134},{"f":"Digital/artwork_135.jpg","m":"Digital","t":"Day 27 #50daychallenge","d":"Ben 10 suggested by @babu.gc.73 · Thought of doing ben 10 with all the aliens.. · But time didn't permit..","n":135},{"f":"Digital/artwork_136.jpg","m":"Digital","t":"Day 26 #50daychallenge","d":"Power rangers SPD. Suggested by @meghana_shekar_15 · All the 90s kids out there · Do u remember the time when power rangers were THE thing before mar…","n":136},{"f":"Pencil/artwork_137.jpg","m":"Pencil","t":"Day 25 #50daychallenge","d":"Sketch of INS VIKRAMADITYA ..our own aircraft carrier… · Indian navy day special · Aircraft carriers are literally floating cities in ocean and are s…","n":137},{"f":"Pencil/artwork_138.jpg","m":"Pencil","t":"Day 24 #50daychallenge","d":"London eye suggested by @syed.layeeq.56 · London's big ben and london eye are in my my top places to visit in my life list · How many of u wanna go t…","n":138},{"f":"Pencil/artwork_139.jpg","m":"Pencil","t":"Day 23 #50daychallenge","d":"Albus dumbledore suggested by @jananyshivakumar · How many of you are potter heads here? · I'm big one","n":139},{"f":"Digital/artwork_140.jpg","m":"Digital","t":"Day 22 # 50daychallenge","d":"Sketch of @rakshitshetty avane srimannarayana suggested by @harisharock · Had a busy morning today · But still managed to do this","n":140},{"f":"Digital/artwork_141.jpg","m":"Digital","t":"Day 20 #50daychallenge","d":"Ultra instinct goku suggested by @farry269 · May look simple anime style drawing · But it was really difficult to draw some of the effects in my mobi…","n":141},{"f":"Pencil/artwork_142.jpg","m":"Pencil","t":"Day 19 #50daychallenge","d":"Sketch of @rachita_instaofficial suggested by @i_am_likhitha · Should have used much smoother paper i guess · Still happy with the result","n":142},{"f":"Pencil/artwork_143.jpg","m":"Pencil","t":"Day 18 #50daychallenge","d":"Panda suggested by @kusuma_kethireddy · Back to traditional · Got a new steadler pencil","n":143},{"f":"Digital/artwork_144.jpg","m":"Digital","t":"Day 17 #50daychallenge","d":"Lord shiva suggested by @harisharock · Took almost a week to finish this one · Learnt a lot by doing this painting","n":144},{"f":"Digital/artwork_145.jpg","m":"Digital","t":"Day 16 #50daychallenge","d":"Dept. Of biotechnology, GSC suggested by @harshinishree27 · Proud to say that I'm from this department · Have lots of experience and beautiful memori…","n":145},{"f":"Digital/artwork_146.jpg","m":"Digital","t":"Day 15 #50daychallenge","d":"APJ Abdul Kalam sir suggested by @gowrish_s_p \"Dream is not that which you see while sleeping, it is something which doesn't let you sleep\" · One of…","n":146},{"f":"Digital/artwork_147.jpg","m":"Digital","t":"Day 14 #50daychallenge","d":"Pokemon ash and pikachu suggested by @meghana_shekar_15 · Gotta catch em all… · My childhood is filled with this awesome show..","n":147},{"f":"Other/artwork_148.jpg","m":"Other","t":"Day 13 #50daychallenge","d":"The grinch suggested by @itsanjumara · Have y'all seen this movie played by #benedictcumberbatch · I just loved it.","n":148},{"f":"Digital/artwork_149.jpg","m":"Digital","t":"Day 10 #50daychallenge","d":"Doraemon suggested by @tajmonu_mohsin · The line work is kinda sloppy · Cus doing these digital art in 5.5\" inch smartphone is hard and painful","n":149},{"f":"Pencil/artwork_150.jpg","m":"Pencil","t":"Day 9 #50daychallenge","d":"Hampi stone Chariot suggested by @mahesh_m_uppar · Not perfect · Had a busy schedule today so had to do quick sketch","n":150},{"f":"Digital/artwork_151.jpg","m":"Digital","t":"Day 7 #50daychallenge","d":"Tom and jerry as suggested by @kavya0897 · Lets do something simple aswell · Not even 10% of the challenge is done","n":151},{"f":"Digital/artwork_152.jpg","m":"Digital","t":"Day 5 #50daychallenge","d":"Happy children's day y'all · Heres a digital sketch of pandit jawaharlal nehru · Tried some new style","n":152},{"f":"Digital/artwork_153.jpg","m":"Digital","t":"Day 4 # 50daychallenge","d":"Mr.bean cartoon suggested by @sandhya_bhaskaran_v · If you are feeling down just watch one episode from this amazing show. You will be relieved.. · .","n":153},{"f":"Digital/artwork_154.jpg","m":"Digital","t":"Day 3 #50daychallenge","d":"Rayappan digital art · Suggested by @arshath_ak23 · Share as much as possible guys..","n":154},{"f":"Digital/artwork_155.jpg","m":"Digital","t":"Day 2 #50daychallenge","d":"Shinchan suggested by @revankarmeghana · I usually don't do cartoon · But still ,Let's do something simple aswell","n":155},{"f":"Digital/artwork_156.jpg","m":"Digital","t":"Happy birthday king Kohli @virat.kohli","d":"Another digital scribbled art · Drop your feedbacks and help me improve · Don't forget to share as much as possible","n":156},{"f":"Pencil/artwork_157.jpg","m":"Pencil","t":"Happy family","d":"A small gift to my sisters wedding anniversary · Tried some new techniques · Hope y'all like it..","n":157},{"f":"Digital/artwork_158.jpg","m":"Digital","t":"Most of our childhood is incomplete without this superhero. All…","d":"Show some love, if u really liked it share it in your stories, comment and give your feedbacks. · . · .","n":158},{"f":"Other/artwork_159.jpg","m":"Other","t":"I love you 3000","d":"@robertdowneyjr · First post of my next big project · Will be drawing all the marvel heroes","n":159},{"f":"Watercolor/artwork_160.jpg","m":"Watercolor","t":"HAPPY 73rd INDEPENDENCE DAY","d":"The beauty of our tricolour · . · .","n":160},{"f":"Watercolor/artwork_161.jpg","m":"Watercolor","t":"A bird is safe in its nest - but that is not what its wings are…","d":"Camlin water colour on brustro 300 gsm water colour paper. · . · .","n":161},{"f":"Watercolor/artwork_162.jpg","m":"Watercolor","t":"In order to see birds it is necessary to become a part of the s…","d":". · Camlin watercolor on brustro 300gsm a4 watercolor paper. · .","n":162},{"f":"Charcoal/artwork_163.jpg","m":"Charcoal","t":"Throw me to the wolves and I will return, leading the pack.","d":". · Camlin Charcoal pencil on brustro 130 gsm A4 sketchbook · .","n":163},{"f":"Pencil/artwork_164.jpg","m":"Pencil","t":"Birthday gift to ashwini","d":"Late post. · . · . .","n":164},{"f":"Pencil/artwork_165.jpg","m":"Pencil","t":"Birthday gift to sai saran","d":"Late post · . · .","n":165},{"f":"Oil/artwork_166.jpg","m":"Oil","t":"Its me","d":"My first try on oil painting…. · New beginning · Thinking of doing more oil paintings.","n":166},{"f":"Pencil/artwork_167.jpg","m":"Pencil","t":"Zeenath sabah @makeupbyzeenath","d":"Best for the last · Makeup artist · Partner in crime","n":167},{"f":"Pencil/artwork_168.jpg","m":"Pencil","t":"Vanaja","d":"Kolar girl · Playgirl(has too many gfs) · Silent","n":168},{"f":"Pencil/artwork_169.jpg","m":"Pencil","t":"Suman S @sumansuman92","d":"Patriot · Tamil telugu hybrid · Kannada baruthe ro.","n":169},{"f":"Pencil/artwork_170.jpg","m":"Pencil","t":"Srikanth L @iam_sriki_","d":"Childman · Odhilla but topper · Think big","n":170},{"f":"Pencil/artwork_171.jpg","m":"Pencil","t":"Sanjay N @sanjaygowda5555","d":"Pubg, mini militia · Gamer · Project mate","n":171},{"f":"Pencil/artwork_172.jpg","m":"Pencil","t":"Pavithra","d":"Quite · Observant · Prefers to be alone","n":172},{"f":"Pencil/artwork_173.jpg","m":"Pencil","t":"Manjushree D S @jaan_a_lot","d":"Topper · Hyperactive · Dancer","n":173},{"f":"Pencil/artwork_174.jpg","m":"Pencil","t":"Manjunath B S @manju_shaivas","d":"Manja manja · Drunk eyes · Pure veg","n":174},{"f":"Pencil/artwork_175.jpg","m":"Pencil","t":"Madhusudhan","d":"Class rep. Mr.CR · Fashion sensation · Car stunt man","n":175},{"f":"Pencil/artwork_176.jpg","m":"Pencil","t":"Lakshmi Narayana","d":"Brahmana.. · Veg only · Decent","n":176},{"f":"Pencil/artwork_177.jpg","m":"Pencil","t":"Harisha N @harisharock","d":"Kudka · Dirty mind · Fun guy","n":177},{"f":"Pencil/artwork_178.jpg","m":"Pencil","t":"Hamsaveni @hamsa.hamsu.35","d":"The mother · Evercaring · Curious.","n":178},{"f":"Pencil/artwork_179.jpg","m":"Pencil","t":"Hajira bee","d":"Silent observer · Punctual · Kolar hudgi","n":179},{"f":"Pencil/artwork_180.jpg","m":"Pencil","t":"Gowreesh gowda B A","d":"Teacher · Juice kudithiya · Silent observer","n":180},{"f":"Pencil/artwork_181.jpg","m":"Pencil","t":"Charitha @charitha_k_gowda","d":"Chari/ cherry · Workaholi · Busy person","n":181},{"f":"Pencil/artwork_182.jpg","m":"Pencil","t":"Bhagya Lakshmi @bhagyalakshmi0909","d":"Mena minukki · Kulli · Fun and creative","n":182},{"f":"Pencil/artwork_183.jpg","m":"Pencil","t":"Abilash H M …¾ @abhilashhm15a","d":"Captain kannadiga..also captain america · Kencha · Dialogue man","n":183},{"f":"Watercolor/artwork_184.jpg","m":"Watercolor","t":"Find the beauty even in chaos","d":"Quick messy water painting of a parrot on A5 sketchbook. · Posting after a long gap.. · Hope y'all like this","n":184},{"f":"Digital/artwork_185.jpg","m":"Digital","t":"HAPPY MAHASHIVRATHRI EVERYONE","d":"My first digital art.. · Share the post if u liked it · And drop ur feedbacks in the comments..","n":185},{"f":"Other/artwork_186.jpg","m":"Other","t":"A small tribute to the martyred crpf jawans at pulwama, kashmir.","d":"Lets all pray for the bravehearts protecting us by risking their lives · Such a cowardly act by disgusting scumbags.. · The debt will be repayed hard…","n":186},{"f":"Pencil/artwork_187.jpg","m":"Pencil","t":"Nature made me a freak. Man made me a weapon. And God made it l…","d":"Coloured sketch of logan aka wolverine played by @thehughjackman from my favorite x-men movie. · . · .","n":187},{"f":"Pencil/artwork_188.jpg","m":"Pencil","t":"Prathiba and Mithun couple coloured sketch | Commissioned work…","d":"Watch timelapse video. Link in bio · . · .","n":188},{"f":"Pencil/artwork_189.jpg","m":"Pencil","t":"Rajesh, Suma and Sohan family coloured sketch | commissioned wo…","d":"Watch the timelapse in youtube.Link in bio · .. · .","n":189},{"f":"Charcoal/artwork_190.jpg","m":"Charcoal","t":"A lion doesn't concern itself with the opinion of the sheep","d":"Charcoal sketch of a lion inspired by @anzartistix","n":190},{"f":"Pencil/artwork_191.jpg","m":"Pencil","t":"Christmas gift to my lecturer #latepost #family #pencilsketch #…","d":"","n":191},{"f":"Pencil/artwork_192.jpg","m":"Pencil","t":"you're big,ive fought bigger","d":"He guys took a while for this..hope y'all like it. Do drop your feedback what u felt about it.@chrishemsworth #thor @artistic.empire #thorsketch #ske…","n":192},{"f":"Watercolor/artwork_193.jpg","m":"Watercolor","t":"Tried something different","d":"","n":193},{"f":"Watercolor/artwork_194.jpg","m":"Watercolor","t":"Challenge yourself against your fear..","d":"","n":194},{"f":"Pencil/artwork_195.jpg","m":"Pencil","t":"Dracarys\" @emilia_clarke #danaerystargaryen #pencilsketch #moth…","d":"","n":195},{"f":"Other/artwork_196.jpg","m":"Other","t":"Let me put a smile on that face","d":"","n":196},{"f":"Other/artwork_197.jpg","m":"Other","t":"i guess one person can make a difference\"#stanlee #excelsior #l…","d":"","n":197},{"f":"Other/artwork_198.jpg","m":"Other","t":"I can do this all day\" #captainamerica #sketchtime #colouredske…","d":"","n":198},{"f":"Other/artwork_199.jpg","m":"Other","t":"#latepost #mysketch @misbah_scorp #colouredsketch #birthdaysket…","d":"","n":199},{"f":"Other/artwork_200.jpg","m":"Other","t":"#latepost #mysketch @makeupbyzeenath #graphitedrawing","d":"","n":200},{"f":"Other/artwork_201.jpg","m":"Other","t":"sometimes you gotta run before you can walk\" #tonystark #ironma…","d":"","n":201},{"f":"Other/artwork_202.jpg","m":"Other","t":"#sketchtime #catandbutterfly #curiosity #repost","d":"","n":202},{"f":"Other/artwork_203.jpg","m":"Other","t":"#parakeetsketch #sketchtime #peace","d":"","n":203}];
 
-        // Lightbox state
-        let lightboxOpen = false;
-        let currentIndex = 0;
-        let currentMediumIndex = 0;
+const LABELS = { 'Other':'Sketches & Studies', 'Watercolor':'Watercolour' };
+const label = m => LABELS[m] || m;
 
-        // DOM elements
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxTitle = document.getElementById('lightbox-title');
-        const lightboxMedium = document.getElementById('lightbox-medium');
-        const lightboxCounter = document.getElementById('lightbox-counter');
-        const mediumNav = document.getElementById('medium-nav');
+const MEDIUM_ORDER = ['Pencil','Other','Digital','Charcoal','Watercolor','Acrylic','Oil','Pen','Ink','Photography','Mixed Media','Pastel'];
 
-        function openLightbox(index) {
-            currentIndex = index;
-            lightboxOpen = true;
-            lightbox.classList.add('open');
-            document.body.style.overflow = 'hidden';
-            renderLightbox();
-            renderMediumNav();
-        }
+/* ---- state ---- */
+let filter = 'all';
+let list = [];      /* current filtered list */
+let idx = 0;        /* index within list */
+let medIdx = 0;     /* medium cursor for ↑↓ */
+let open = false;
 
-        function closeLightbox() {
-            lightboxOpen = false;
-            lightbox.classList.remove('open');
-            document.body.style.overflow = '';
-        }
+/* ---- elements ---- */
+const $ = id => document.getElementById(id);
+const filterBar = $('filter-bar'), gallery = $('gallery-content');
+const lb = $('lb'), lbImg = $('lb-img'), lbTitle = $('lb-title'), lbDet = $('lb-det'),
+      lbMed2 = $('lb-med2'), lbCount = $('lb-count'), lbMed = $('lb-med'),
+      lbInquire = $('lb-inquire'), lbMediums = $('lb-mediums');
 
-        function renderLightbox() {
-            const items = flattenArtworks(currentFilter);
-            const item = items[currentIndex];
-            if (!item) return;
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-            lightboxImage.src = `assets/artworks/${item.file}`;
-            lightboxTitle.textContent = item.caption;
-            lightboxMedium.textContent = item.medium;
-            lightboxCounter.textContent = `${currentIndex + 1} / ${items.length}`;
-        }
+/* ---- counts + chips ---- */
+function counts(){
+  const c = {}; ITEMS.forEach(i => c[i.m] = (c[i.m]||0)+1); return c;
+}
+function buildChips(){
+  const c = counts();
+  const frag = document.createDocumentFragment();
+  const all = document.createElement('button');
+  all.className = 'fbtn' + (filter==='all'?' active':'');
+  all.dataset.f = 'all';
+  all.innerHTML = 'All <span class="cnt">('+ITEMS.length+')</span>';
+  frag.appendChild(all);
+  MEDIUM_ORDER.forEach(m => {
+    if(!c[m]) return;
+    const b = document.createElement('button');
+    b.className = 'fbtn' + (filter===m?' active':'');
+    b.dataset.f = m;
+    b.innerHTML = esc(label(m)) + ' <span class="cnt">('+c[m]+')</span>';
+    frag.appendChild(b);
+  });
+  filterBar.innerHTML = ''; filterBar.appendChild(frag);
+}
 
-        function renderMediumNav() {
-            const mediums = Object.keys(ARTWORKS_DATA);
-            mediumNav.innerHTML = '';
-            mediums.forEach((medium, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'medium-nav-btn' + (idx === currentMediumIndex ? ' active' : '');
-                btn.textContent = medium;
-                btn.addEventListener('click', () => {
-                    currentMediumIndex = idx;
-                    // Jump to first item of this medium
-                    const items = flattenArtworks(currentFilter);
-                    const firstIdx = items.findIndex(i => i.medium === medium);
-                    if (firstIdx >= 0) {
-                        currentIndex = firstIdx;
-                        renderLightbox();
-                        renderMediumNav();
-                    }
-                });
-                mediumNav.appendChild(btn);
-            });
-        }
+/* ---- gallery render ---- */
+function setFilter(f){
+  filter = f;
+  if(f === 'all'){
+    list = MEDIUM_ORDER.flatMap(m => ITEMS.filter(i => i.m === m));
+  } else {
+    list = ITEMS.filter(i => i.m === f);
+  }
+}
+function renderGallery(){
+  gallery.innerHTML = '';
+  const mediums = filter==='all' ? MEDIUM_ORDER.filter(m => ITEMS.some(i=>i.m===m)) : [filter];
+  const frag = document.createDocumentFragment();
+  mediums.forEach(m => {
+    const items = ITEMS.filter(i => i.m === m);
+    const sec = document.createElement('div');
+    sec.className = 'medium-section';
+    sec.innerHTML =
+      '<div class="medium-header"><h3 class="medium-title">'+esc(label(m))+'</h3>'+
+      '<span class="medium-count">'+items.length+' work'+(items.length!==1?'s':'')+'</span></div>'+
+      '<div class="grid">' + items.map((it, i) =>
+        '<article class="gitem" data-m="'+m+'" data-i="'+i+'">'+
+          '<img src="assets/artworks/'+it.f+'" alt="'+esc(it.t)+'" loading="lazy">'+
+          '<div class="ov"><h3>'+esc(it.t)+'</h3><p>'+esc(label(m))+'</p></div>'+
+        '</article>').join('') +
+      '</div>';
+    frag.appendChild(sec);
+  });
+  gallery.appendChild(frag);
+  if(!mediums.length) gallery.innerHTML = '<p class="empty-note">No works in this medium yet.</p>';
 
-        function nextImage() {
-            const items = flattenArtworks(currentFilter);
-            currentIndex = (currentIndex + 1) % items.length;
-            renderLightbox();
-        }
+  /* clicking a card opens at its index in the current list */
+  gallery.querySelectorAll('.gitem').forEach(el => {
+    el.addEventListener('click', () => {
+      const m = el.dataset.m, i = parseInt(el.dataset.i, 10);
+      const n = ITEMS.filter(x => x.m === m)[i].n;
+      const gi = list.findIndex(x => x.n === n);
+      if(gi >= 0) openAt(gi);
+    });
+  });
+}
 
-        function prevImage() {
-            const items = flattenArtworks(currentFilter);
-            currentIndex = (currentIndex - 1 + items.length) % items.length;
-            renderLightbox();
-        }
+/* ---- lightbox ---- */
+function openAt(i){
+  idx = i; open = true;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  medIdx = MEDIUM_ORDER.indexOf(list[idx].m);
+  paint();
+}
+function close(){
+  open = false;
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function paint(){
+  const it = list[idx];
+  if(!it) return;
+  lbImg.src = 'assets/artworks/' + it.f;
+  lbImg.alt = it.t;
+  lbTitle.textContent = it.t;
+  lbDet.textContent = it.d || '';
+  lbMed.textContent = label(it.m);
+  lbMed2.textContent = label(it.m);
+  lbCount.textContent = (idx+1) + ' / ' + list.length;
+  lbInquire.href = 'mailto:jagansartfolio@gmail.com?subject=' + encodeURIComponent('Inquiry — "'+it.t+'" ('+label(it.m)+')');
+  /* medium buttons */
+  lbMediums.innerHTML = '';
+  MEDIUM_ORDER.filter(m => list.some(x => x.m === m)).forEach(m => {
+    const b = document.createElement('button');
+    b.className = 'lbm' + (m === it.m ? ' active' : '');
+    b.textContent = label(m);
+    b.addEventListener('click', () => jumpMedium(m));
+    lbMediums.appendChild(b);
+  });
+}
+function nextImg(){ idx = (idx+1) % list.length; paint(); }
+function prevImg(){ idx = (idx-1+list.length) % list.length; paint(); }
+function jumpMedium(m){
+  const i = list.findIndex(x => x.m === m);
+  if(i >= 0){ idx = i; medIdx = MEDIUM_ORDER.indexOf(m); paint(); }
+}
+function nextMed(){
+  const ms = MEDIUM_ORDER.filter(m => list.some(x => x.m === m));
+  if(ms.length < 2) return;
+  medIdx = (medIdx+1) % ms.length;
+  jumpMedium(ms[medIdx]);
+}
+function prevMed(){
+  const ms = MEDIUM_ORDER.filter(m => list.some(x => x.m === m));
+  if(ms.length < 2) return;
+  medIdx = (medIdx-1+ms.length) % ms.length;
+  jumpMedium(ms[medIdx]);
+}
 
-        function nextMedium() {
-            const mediums = Object.keys(ARTWORKS_DATA);
-            currentMediumIndex = (currentMediumIndex + 1) % mediums.length;
-            const items = flattenArtworks(currentFilter);
-            const medium = mediums[currentMediumIndex];
-            const firstIdx = items.findIndex(i => i.medium === medium);
-            if (firstIdx >= 0) {
-                currentIndex = firstIdx;
-                renderLightbox();
-                renderMediumNav();
-            }
-        }
+/* buttons + keys */
+$('lb-close').addEventListener('click', close);
+$('lb-prev').addEventListener('click', prevImg);
+$('lb-next').addEventListener('click', nextImg);
+lb.addEventListener('click', e => { if(e.target === lb) close(); });
+document.addEventListener('keydown', e => {
+  if(!open) return;
+  if(e.key === 'Escape') close();
+  else if(e.key === 'ArrowLeft') prevImg();
+  else if(e.key === 'ArrowRight') nextImg();
+  else if(e.key === 'ArrowUp') prevMed();
+  else if(e.key === 'ArrowDown') nextMed();
+});
 
-        function prevMedium() {
-            const mediums = Object.keys(ARTWORKS_DATA);
-            currentMediumIndex = (currentMediumIndex - 1 + mediums.length) % mediums.length;
-            const items = flattenArtworks(currentFilter);
-            const medium = mediums[currentMediumIndex];
-            const firstIdx = items.findIndex(i => i.medium === medium);
-            if (firstIdx >= 0) {
-                currentIndex = firstIdx;
-                renderLightbox();
-                renderMediumNav();
-            }
-        }
+/* touch: horizontal = images, vertical = mediums */
+let tx=0, ty=0;
+lb.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; ty = e.changedTouches[0].screenY; }, {passive:true});
+lb.addEventListener('touchend', e => {
+  const dx = tx - e.changedTouches[0].screenX;
+  const dy = ty - e.changedTouches[0].screenY;
+  if(Math.max(Math.abs(dx), Math.abs(dy)) < 50) return;
+  if(Math.abs(dx) > Math.abs(dy)){ dx > 0 ? nextImg() : prevImg(); }
+  else { dy > 0 ? nextMed() : prevMed(); }
+}, {passive:true});
 
-        // Touch handling
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchEndX = 0;
-        let touchEndY = 0;
+/* chips */
+filterBar.addEventListener('click', e => {
+  const b = e.target.closest('.fbtn');
+  if(!b) return;
+  setFilter(b.dataset.f);
+  buildChips();
+  renderGallery();
+});
 
-        lightbox.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        lightbox.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const diffX = touchStartX - touchEndX;
-            const diffY = touchStartY - touchEndY;
-            const threshold = 50;
-
-            if (Math.abs(diffX) > Math.abs(diffY)) {
-                // Horizontal swipe
-                if (Math.abs(diffX) > threshold) {
-                    if (diffX > 0) nextImage();
-                    else prevImage();
-                }
-            } else {
-                // Vertical swipe
-                if (Math.abs(diffY) > threshold) {
-                    if (diffY > 0) nextMedium();
-                    else prevMedium();
-                }
-            }
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!lightboxOpen) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') prevImage();
-            if (e.key === 'ArrowRight') nextImage();
-            if (e.key === 'ArrowUp') prevMedium();
-            if (e.key === 'ArrowDown') nextMedium();
-        });
-
-        // Button handlers
-        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-        document.getElementById('lightbox-prev').addEventListener('click', prevImage);
-        document.getElementById('lightbox-next').addEventListener('click', nextImage);
-
-        // Close on background click
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-
-        // Gallery rendering
-        const galleryContent = document.getElementById('gallery-content');
-        const filterBar = document.getElementById('filter-bar');
-
-        Object.keys(ARTWORKS_DATA).forEach(medium => {
-            const btn = document.createElement('button');
-            btn.className = 'filter-btn';
-            btn.dataset.filter = medium;
-            btn.textContent = `${medium} (${ARTWORKS_DATA[medium].length})`;
-            filterBar.appendChild(btn);
-        });
-
-        function renderGallery(filter) {
-            galleryContent.innerHTML = '';
-            currentFilter = filter;
-
-            const mediums = filter === 'all' ? Object.keys(ARTWORKS_DATA) : [filter];
-
-            mediums.forEach(medium => {
-                const items = ARTWORKS_DATA[medium];
-
-                const section = document.createElement('div');
-                section.className = 'medium-section';
-                section.innerHTML = `
-                    <div class="medium-header">
-                        <h3 class="medium-title">${medium}</h3>
-                        <span class="medium-count">${items.length} artwork${items.length !== 1 ? 's' : ''}</span>
-                    </div>
-                    <div class="gallery-grid">
-                        ${items.map((item, i) => `
-                            <article class="gallery-item" data-medium="${medium}" data-index="${i}">
-                                <img class="gallery-item-image" src="assets/artworks/${item.file}" alt="${item.caption}" loading="lazy">
-                                <div class="gallery-item-overlay">
-                                    <div class="gallery-item-title">${item.caption}</div>
-                                    <div class="gallery-item-meta">${medium}</div>
-                                </div>
-                            </article>
-                        `).join('')}
-                    </div>
-                `;
-                galleryContent.appendChild(section);
-            });
-
-            // Wire up clicks
-            galleryContent.querySelectorAll('.gallery-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const medium = item.dataset.medium;
-                    const idx = parseInt(item.dataset.index);
-                    const items = flattenArtworks(filter);
-                    // Find the correct global index
-                    const globalIdx = items.findIndex(i => i.medium === medium && i.caption === ARTWORKS_DATA[medium][idx].caption);
-                    if (globalIdx >= 0) {
-                        currentMediumIndex = Object.keys(ARTWORKS_DATA).indexOf(medium);
-                        openLightbox(globalIdx);
-                    }
-                });
-            });
-        }
-
-        // Initial render
-        renderGallery('all');
-
-        // Filter click handlers
-        filterBar.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('filter-btn')) return;
-
-            filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-
-            renderGallery(e.target.dataset.filter);
-        });
-    </script>
-
+/* deep link: gallery.html?medium=Pencil */
+(function(){
+  const p = new URLSearchParams(location.search).get('medium');
+  const init = (p && ITEMS.some(i => i.m === p)) ? p : 'all';
+  setFilter(init); buildChips(); renderGallery();
+})();
+</script>
 </body>
 </html>

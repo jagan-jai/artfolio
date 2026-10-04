@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogue — Selected Works | JagansArtfolio</title>
+<meta name="description" content="Selected works catalogue — Jagan S, Bangalore. Print or save as PDF.">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0b0a; --paper:#faf8f4; --ink:#1c1a17; --ink2:#5c574f;
+  --gold:#b08d57; --gold2:#d4b87a;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#3a3733;font-family:var(--sans);font-weight:300;color:var(--ink);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* toolbar (screen only) */
+.toolbar{position:fixed;top:18px;right:18px;z-index:100;display:flex;gap:10px}
+.tbtn{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:12px 18px;border-radius:2px;cursor:pointer;border:1px solid rgba(255,255,255,.25);background:rgba(12,11,10,.85);color:#f1eee9;transition:.3s;backdrop-filter:blur(10px)}
+.tbtn:hover{border-color:var(--gold2);color:var(--gold2)}
+.tbtn.solid{background:var(--gold);border-color:var(--gold);color:#0c0b0a}
+.tbtn.solid:hover{background:var(--gold2)}
+
+/* pages */
+.page{width:210mm;min-height:297mm;margin:26px auto;background:var(--paper);box-shadow:0 24px 70px rgba(0,0,0,.45);position:relative;overflow:hidden}
+.page.dark{background:var(--bg);color:#f1eee9}
+
+/* cover */
+.cover{display:flex;flex-direction:column;justify-content:space-between;padding:22mm 20mm}
+.cover .top{display:flex;align-items:center;gap:14px}
+.cover .top img{width:44px;height:44px}
+.cover .top span{font-family:var(--serif);font-size:26px;letter-spacing:.06em;color:#f1eee9}
+.cover h1{font-family:var(--serif);font-weight:300;font-size:64px;line-height:1.02;margin:0 0 18px;color:#f1eee9}
+.cover h1 em{font-style:italic;color:var(--gold2)}
+.cover .sub{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.cover .meta{margin-top:26px;color:#a49e94;font-size:14px;line-height:1.9}
+.cover .bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
+.cover .bottom .b1{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#6b665e}
+.cover .bottom .b2{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold2);text-align:right}
+.cover .rule{width:64px;height:1px;background:var(--gold);margin:26px 0}
+
+/* inner pages */
+.sheet{padding:18mm 18mm 16mm;display:flex;flex-direction:column}
+.sheet .kicker{font-family:var(--mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.sheet h2{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1.05;margin-bottom:22px}
+.sheet .cols{display:grid;grid-template-columns:1fr 1fr;gap:14mm}
+.sheet p{font-size:13px;line-height:1.85;color:var(--ink2);margin-bottom:12px}
+.sheet p.lead{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink)}
+.sheet .facts{margin-top:10px;border-top:1px solid rgba(28,26,23,.14)}
+.sheet .fact{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid rgba(28,26,23,.14);font-size:12px}
+.sheet .fact b{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--gold);padding-top:2px}
+.sheet .fact span{color:var(--ink2);text-align:right;max-width:60%}
+
+/* works grid */
+.works-grid{display:grid;grid-template-columns:1fr 1fr;gap:10mm 9mm;flex:1}
+.wfig{display:flex;flex-direction:column;gap:8px}
+.wfig img{width:100%;aspect-ratio:1;object-fit:cover;background:#e9e5de}
+.wfig .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.wfig .cap h3{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.2}
+.wfig .cap span{font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.sheet-foot{margin-top:14px;padding-top:12px;border-top:1px solid rgba(28,26,23,.14);display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#9a948a}
+.page.dark .sheet-foot{border-top-color:rgba(255,255,255,.12);color:#6b665e}
+
+/* contact page */
+.contact-block{margin-top:8mm;display:grid;grid-template-columns:1fr 1fr;gap:10mm}
+.contact-block .cb{border:1px solid rgba(28,26,23,.16);padding:20px}
+.contact-block h4{font-family:var(--mono);font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500}
+.contact-block p{font-size:13px;color:var(--ink2);line-height:1.9}
+.contact-block a{color:var(--ink);border-bottom:1px solid rgba(28,26,23,.25)}
+.steps{margin-top:10mm}
+.step{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid rgba(28,26,23,.12)}
+.step .sn{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--gold);min-width:34px;padding-top:3px}
+.step h5{font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:3px}
+.step p{font-size:12px;margin:0}
+
+@media print{
+  body{background:#fff}
+  .toolbar{display:none}
+  .page{margin:0;box-shadow:none;width:auto;min-height:0}
+  .page{page-break-after:always;break-after:page}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  @page{size:A4;margin:0}
+}
+@media(max-width:820px){
+  .page{width:100%;min-height:0;margin:10px 0}
+  .sheet{padding:9mm}
+  .works-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .sheet .cols,.contact-block{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <a class="tbtn" href="index.html">← Back to site</a>
+  <button class="tbtn solid" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="page dark cover">
+  <div class="top"><img src="assets/logo.svg" alt=""><span>JagansArtfolio</span></div>
+  <div>
+    <p class="sub">Selected Works · Catalogue 2026</p>
+    <div class="rule"></div>
+    <h1>Jagan S<br><em>Portraits, wildlife & studies</em></h1>
+    <p class="meta">Self-taught realism from Bangalore, India.<br>Graphite · Charcoal · Oil · Acrylic · Watercolour · Digital</p>
+  </div>
+  <div class="bottom">
+    <span class="b1">jagansartfolio.com</span>
+    <span class="b2">@jagans_artfolio<br>jagansartfolio@gmail.com</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="page">
+  <div class="sheet">
+    <p class="kicker">01 — The Artist</p>
+    <h2>Discipline and creativity aren’t opposites.</h2>
+    <div class="cols">
+      <div>
+        <p class="lead">I studied biotechnology and practice art. They’re closer than they sound.</p>
+        <p>In Bangalore, I filled margins with doodles, faces, shapes, lines that came without much thought. Instinct. Even through a biotechnology degree, art stayed with me between lectures and lab work.</p>
+        <p>Now I work in healthcare marketing strategy and paint, draw, create — not as a hobby, but as parallel practice. Graphite, charcoal, oil, acrylic, watercolour, pastel, mixed media. I’m exploring sculpture and modelling; each material teaches something the others don’t, and I follow the idea rather than forcing the medium.</p>
+        <p>Realism is where I start — portraits, birds, animals, the natural world — but I leave space for exploration. Growth happens outside comfort, and I try to visit often.</p>
+      </div>
+      <div>
+        <p>My work has been shown at exhibitions, with commissions completed for international clients — concept through delivery, signed originals with certificates.</p>
+        <div class="facts">
+          <div class="fact"><b>Based</b><span>Bangalore, India</span></div>
+          <div class="fact"><b>Practice</b><span>Realism — portraits, wildlife, nature; self-taught</span></div>
+          <div class="fact"><b>Mediums</b><span>Pencil, charcoal, digital, watercolour, acrylic, oil, pen, ink, pastel, photography, mixed media</span></div>
+          <div class="fact"><b>Exhibited</b><span>National-level exhibitions</span></div>
+          <div class="fact"><b>Commissions</b><span>International clients · worldwide shipping</span></div>
+          <div class="fact"><b>Studio</b><span>jagansartfolio.com · @jagans_artfolio</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-foot"><span>JagansArtfolio — Catalogue 2026</span><span>02</span></div>
+  </div>
+</div>
+
+<!-- SELECTED WORKS (4 sheets of 6, injected) -->
+<div id="works-pages"></div>
+
+<!-- COMMISSIONS + CONTACT -->
+<div class="page">
+  <div class="sheet">
+    <p class="kicker">Commissions</p>
+    <h2>Let’s create something together.</h2>
+    <p style="max-width:150mm">Portrait, wildlife, landscape or an idea of your own — every commission is a conversation, from first sketch to final delivery. I handle international shipping myself.</p>
+    <div class="steps">
+      <div class="step"><span class="sn">/01</span><div><h5>Brief</h5><p>Subject, size, medium and where the piece will live. Reference photos welcome.</p></div></div>
+      <div class="step"><span class="sn">/02</span><div><h5>Dialogue</h5><p>Composition, timeline and price agreed. A 50% deposit secures your slot.</p></div></div>
+      <div class="step"><span class="sn">/03</span><div><h5>Creation</h5><p>Progress updates as the piece develops — revisions until it’s exactly right.</p></div></div>
+      <div class="step"><span class="sn">/04</span><div><h5>Delivery</h5><p>Signed, certified and carefully packaged; shipped insured to your door, worldwide.</p></div></div>
+    </div>
+    <div class="contact-block">
+      <div class="cb">
+        <h4>Write to the studio</h4>
+        <p><a href="mailto:jagansartfolio@gmail.com">jagansartfolio@gmail.com</a><br>
+        Replies to every inquiry within 24 hours.</p>
+      </div>
+      <div class="cb">
+        <h4>Elsewhere</h4>
+        <p>jagansartfolio.com<br>
+        Instagram — @jagans_artfolio<br>
+        Bangalore, India</p>
+      </div>
+    </div>
+    <div class="sheet-foot"><span>© 2026 JagansArtfolio — All works © Jagan S</span><span>08</span></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+/* selected works — injected from the studio archive */
+const WORKS = [{"f":"Acrylic/artwork_001.jpg","t":"Golden Beak","m":"Acrylic"},{"f":"Pencil/artwork_002.jpg","t":"Nritya","m":"Pencil"},{"f":"Oil/artwork_003.jpg","t":"Hope is wax becoming light, burning even as it disappears","m":"Oil"},{"f":"Acrylic/artwork_006.jpg","t":"Light of devotion","m":"Acrylic"},{"f":"Charcoal/artwork_007.jpg","t":"shimmered grace","m":"Charcoal"},{"f":"Charcoal/artwork_008.jpg","t":"Reverie","m":"Charcoal"},{"f":"Pencil/artwork_012.jpg","t":"Apsara","m":"Pencil"},{"f":"Pen/artwork_024.jpg","t":"Verdant vines","m":"Pen"},{"f":"Pencil/artwork_029.jpg","t":"Reaching out","m":"Pencil"},{"f":"Pencil/artwork_040.jpg","t":"CRIMSON","m":"Pencil"},{"f":"Ink/artwork_046.jpg","t":"Monochrome sketch of Scarlett witch aka wanda maximoff..…","m":"Ink"},{"f":"Digital/artwork_047.jpg","t":"Concept \"sparrow","m":"Digital"},{"f":"Charcoal/artwork_049.jpg","t":"Lion charcoal sketch","m":"Charcoal"},{"f":"Oil/artwork_053.jpg","t":"Spiritual","m":"Oil"},{"f":"Pencil/artwork_055.jpg","t":"Sunkissed","m":"Pencil"},{"f":"Charcoal/artwork_087.jpg","t":"Black stallion","m":"Charcoal"},{"f":"Pen/artwork_090.jpg","t":"Another line work","m":"Pen"},{"f":"Watercolor/artwork_096.jpg","t":"Scary tiger not because of claws and fangs, but scary bec…","m":"Watercolor"},{"f":"Watercolor/artwork_109.jpg","t":"Elephant water colour painting","m":"Watercolor"},{"f":"Mixed Media/artwork_111.jpg","t":"KRATOS - God of war graphite sketch.","m":"Mixed Media"},{"f":"Watercolor/artwork_114.jpg","t":"Golden headed tanager","m":"Watercolor"},{"f":"Charcoal/artwork_119.jpg","t":"people throw stones at you, and Convert them into milesto…","m":"Charcoal"},{"f":"Watercolor/artwork_161.jpg","t":"A bird is safe in its nest - but that is not what its win…","m":"Watercolor"},{"f":"Charcoal/artwork_190.jpg","t":"A lion doesn't concern itself with the opinion of the she…","m":"Charcoal"}];
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+(function(){
+  const host = document.getElementById('works-pages');
+  const perPage = 6, pages = Math.ceil(WORKS.length / perPage);
+  let html = '';
+  for(let p = 0; p < pages; p++){
+    const slice = WORKS.slice(p*perPage, (p+1)*perPage);
+    html += '<div class="page"><div class="sheet">' +
+      '<p class="kicker">' + (p === 0 ? '02 — Selected Works' : 'Selected Works — continued') + '</p>' +
+      '<div class="works-grid">' + slice.map(w =>
+        '<figure class="wfig"><img src="assets/artworks/'+w.f+'" alt="'+esc(w.t)+'">' +
+        '<figcaption class="cap"><h3>'+esc(w.t)+'</h3><span>'+esc(w.m)+'</span></figcaption></figure>'
+      ).join('') + '</div>' +
+      '<div class="sheet-foot"><span>JagansArtfolio — Catalogue 2026</span><span>'+String(p+3).padStart(2,'0')+'</span></div>' +
+      '</div></div>';
+  }
+  host.innerHTML = html;
+})();
+</script>
+</body>
+</html>
