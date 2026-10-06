@@ -5,10 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JagansArtfolio — Original Works & Commissions by Jagan S</title>
 <meta name="description" content="Self-taught realism artist from Bangalore — pencil, charcoal, oil, watercolour, digital. Portraits, wildlife, originals by inquiry, and commissions delivered worldwide.">
-<meta property="og:title" content="JagansArtfolio — Jagan S">
-<meta property="og:description" content="Original works & commissions. Portraits, wildlife and nature in graphite, charcoal, oil, watercolour and digital.">
+<link rel="canonical" href="https://jagansartfolio.com/">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://jagansartfolio.com/">
+<meta property="og:site_name" content="JagansArtfolio">
+<meta property="og:title" content="JagansArtfolio — Original Works & Commissions by Jagan S">
+<meta property="og:description" content="Self-taught realism from Bangalore — portraits, wildlife and nature in graphite, charcoal, oil, watercolour and digital. Original works & commissions worldwide.">
+<meta property="og:image" content="https://jagansartfolio.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="JagansArtfolio — charcoal artwork with the artist name">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JagansArtfolio — Original Works & Commissions by Jagan S">
+<meta name="twitter:description" content="Self-taught realism from Bangalore — graphite, charcoal, oil, watercolour, digital. Commissions worldwide.">
+<meta name="twitter:image" content="https://jagansartfolio.com/assets/og-image.jpg">
+<meta name="theme-color" content="#0c0b0a">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preload" as="image" href="assets/artworks/Acrylic/artwork_001.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -62,7 +75,7 @@ section{position:relative}
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:140px 0 90px}
 .hero-slides{position:absolute;inset:0;z-index:0}
-.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:heroFade 25s linear infinite}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:heroFade 25s linear infinite}
 .hero-slide:nth-child(1){animation-delay:0s}
 .hero-slide:nth-child(2){animation-delay:5s}
 .hero-slide:nth-child(3){animation-delay:10s}
@@ -73,6 +86,7 @@ section{position:relative}
 .hero-inner{position:relative;z-index:2;width:100%}
 .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(52px,8.5vw,116px);line-height:.98;letter-spacing:-.01em;margin:22px 0 26px}
 .hero h1 em{font-style:italic;color:var(--gold2)}
+.hero h1,.hero-sub,.hero .microlabel{text-shadow:0 2px 30px rgba(8,7,6,.85),0 1px 4px rgba(8,7,6,.6)}
 .hero-sub{max-width:520px;color:var(--text2);font-size:16px;line-height:1.75}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:16px 26px;border-radius:2px;border:1px solid transparent;cursor:pointer;transition:.3s var(--ease)}
@@ -193,6 +207,10 @@ footer{padding:80px 0 40px}
 .foot-col a:hover{color:var(--gold2)}
 .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:32px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text3)}
 
+/* touch devices have no hover — keep captions visible */
+body.touch .work .ov{opacity:1;transform:none;padding:16px 14px 12px}
+body.touch .work .ov h3{font-size:16px}
+
 /* ---------- reveal ---------- */
 body.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
 body.js .reveal.in{opacity:1;transform:none}
@@ -214,6 +232,7 @@ body.js .reveal.in{opacity:1;transform:none}
   .hero-stats{gap:34px}
 }
 @media(max-width:640px){
+  .hero-scrim{background:linear-gradient(180deg,rgba(12,11,10,.86) 0%,rgba(12,11,10,.68) 42%,rgba(12,11,10,.46) 70%,var(--bg) 100%)}
   .grid-works{grid-template-columns:1fr 1fr;grid-auto-rows:170px;gap:10px}
   .work.wide{grid-column:span 2}
   .work.tall{grid-row:span 1}
@@ -236,7 +255,7 @@ body.js .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<script>document.body.classList.add('js');</script>
+<script>document.body.classList.add('js');if(('ontouchstart' in window)||(navigator.maxTouchPoints>0))document.body.classList.add('touch');</script>
 
 <div id="preloader"><span class="pl-brand">Jagans Artfolio</span><span class="pl-sub microlabel">Fine Art — Bangalore</span></div>
 
@@ -259,11 +278,11 @@ body.js .reveal.in{opacity:1;transform:none}
 
 <header class="hero" id="top">
   <div class="hero-slides">
-    <div class="hero-slide" style="background-image:url('assets/artworks/Acrylic/artwork_001.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('assets/artworks/Charcoal/artwork_007.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('assets/artworks/Digital/artwork_047.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('assets/artworks/Charcoal/artwork_087.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('assets/artworks/Watercolor/artwork_114.jpg')"></div>
+    <img class="hero-slide" src="assets/artworks/Acrylic/artwork_001.jpg" alt="Golden Beak — acrylic on canvas by Jagan S" fetchpriority="high">
+    <img class="hero-slide" data-src="assets/artworks/Charcoal/artwork_007.jpg" alt="shimmered grace — charcoal on paper">
+    <img class="hero-slide" data-src="assets/artworks/Digital/artwork_047.jpg" alt="Concept Sparrow — digital painting">
+    <img class="hero-slide" data-src="assets/artworks/Charcoal/artwork_087.jpg" alt="Black Stallion — charcoal">
+    <img class="hero-slide" data-src="assets/artworks/Watercolor/artwork_114.jpg" alt="Golden Headed Tanager — watercolour">
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner wrap">
@@ -293,7 +312,7 @@ body.js .reveal.in{opacity:1;transform:none}
 <section class="sec" id="about">
   <div class="wrap about-grid">
     <div class="about-visual reveal">
-      <div class="about-frame"><img src="assets/artworks/Pencil/artwork_040.jpg" alt="Crimson — profile portrait study by Jagan S"></div>
+      <div class="about-frame"><img src="assets/thumbs/Pencil/artwork_040.jpg" alt="Crimson — profile portrait study by Jagan S"></div>
       <div class="about-cap"><span>“Crimson” — colour pencil</span><span>Bangalore, IN</span></div>
     </div>
     <div class="about-content reveal" style="--d:.1s">
@@ -324,51 +343,51 @@ body.js .reveal.in{opacity:1;transform:none}
     </div>
     <div class="grid-works">
       <a class="work wide tall reveal" href="gallery.html" style="--d:.02s">
-        <img src="assets/artworks/Acrylic/artwork_001.jpg" alt="Golden Beak — acrylic on canvas" loading="lazy">
+        <img src="assets/thumbs/Acrylic/artwork_001.jpg" alt="Golden Beak — acrylic on canvas" loading="lazy">
         <div class="ov"><h3>Golden Beak</h3><p>Acrylic on canvas</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.06s">
-        <img src="assets/artworks/Pencil/artwork_002.jpg" alt="Nritya — colour pencil" loading="lazy">
+        <img src="assets/thumbs/Pencil/artwork_002.jpg" alt="Nritya — colour pencil" loading="lazy">
         <div class="ov"><h3>Nritya</h3><p>Colour pencil</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.1s">
-        <img src="assets/artworks/Charcoal/artwork_007.jpg" alt="shimmered grace — charcoal" loading="lazy">
+        <img src="assets/thumbs/Charcoal/artwork_007.jpg" alt="shimmered grace — charcoal" loading="lazy">
         <div class="ov"><h3>shimmered grace</h3><p>Charcoal · 12″×12″</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.14s">
-        <img src="assets/artworks/Oil/artwork_003.jpg" alt="Hope is wax becoming light — oil on canvas" loading="lazy">
+        <img src="assets/thumbs/Oil/artwork_003.jpg" alt="Hope is wax becoming light — oil on canvas" loading="lazy">
         <div class="ov"><h3>Hope is wax becoming light</h3><p>Oil on canvas</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.18s">
-        <img src="assets/artworks/Digital/artwork_047.jpg" alt="Concept Sparrow — digital" loading="lazy">
+        <img src="assets/thumbs/Digital/artwork_047.jpg" alt="Concept Sparrow — digital" loading="lazy">
         <div class="ov"><h3>Concept — Sparrow</h3><p>Digital painting</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.22s">
-        <img src="assets/artworks/Watercolor/artwork_114.jpg" alt="Golden headed tanager — watercolour" loading="lazy">
+        <img src="assets/thumbs/Watercolor/artwork_114.jpg" alt="Golden headed tanager — watercolour" loading="lazy">
         <div class="ov"><h3>Golden Headed Tanager</h3><p>Watercolour</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.26s">
-        <img src="assets/artworks/Pen/artwork_024.jpg" alt="Verdant vines — pen" loading="lazy">
+        <img src="assets/thumbs/Pen/artwork_024.jpg" alt="Verdant vines — pen" loading="lazy">
         <div class="ov"><h3>Verdant Vines</h3><p>Fine line pen</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.3s">
-        <img src="assets/artworks/Ink/artwork_046.jpg" alt="Scarlett Witch — ink" loading="lazy">
+        <img src="assets/thumbs/Ink/artwork_046.jpg" alt="Scarlett Witch — ink" loading="lazy">
         <div class="ov"><h3>Scarlett Witch</h3><p>Monochrome ink</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.34s">
-        <img src="assets/artworks/Pastel/artwork_076.jpg" alt="Day 12 — pastel" loading="lazy">
+        <img src="assets/thumbs/Pastel/artwork_076.jpg" alt="Day 12 — pastel" loading="lazy">
         <div class="ov"><h3>Day 12 — Birthday Special</h3><p>Soft pastel</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.38s">
-        <img src="assets/artworks/Mixed%20Media/artwork_111.jpg" alt="KRATOS — graphite" loading="lazy">
+        <img src="assets/thumbs/Mixed%20Media/artwork_111.jpg" alt="KRATOS — graphite" loading="lazy">
         <div class="ov"><h3>KRATOS — God of War</h3><p>Graphite study</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.42s">
-        <img src="assets/artworks/Charcoal/artwork_087.jpg" alt="Black Stallion — charcoal" loading="lazy">
+        <img src="assets/thumbs/Charcoal/artwork_087.jpg" alt="Black Stallion — charcoal" loading="lazy">
         <div class="ov"><h3>Black Stallion</h3><p>Charcoal</p></div>
       </a>
       <a class="work reveal" href="gallery.html" style="--d:.46s">
-        <img src="assets/artworks/Charcoal/artwork_190.jpg" alt="Lion — charcoal" loading="lazy">
+        <img src="assets/thumbs/Charcoal/artwork_190.jpg" alt="Lion — charcoal" loading="lazy">
         <div class="ov"><h3>Lion</h3><p>Charcoal study</p></div>
       </a>
     </div>
@@ -455,19 +474,19 @@ body.js .reveal.in{opacity:1;transform:none}
     </div>
     <div class="acq-grid">
       <div class="acq reveal" style="--d:.04s">
-        <img src="assets/artworks/Charcoal/artwork_087.jpg" alt="Black Stallion — charcoal" loading="lazy">
+        <img src="assets/thumbs/Charcoal/artwork_087.jpg" alt="Black Stallion — charcoal" loading="lazy">
         <div class="body"><h3>Black Stallion</h3><div class="meta">Charcoal on paper</div>
         <p>One of the most requested pieces in the catalogue. Available as the original and as a limited print run.</p>
         <div class="row"><span class="price">Price on request</span><a class="btn btn-ghost" href="mailto:jagansartfolio@gmail.com?subject=Inquiry%20%E2%80%94%20%22Black%20Stallion%22%20(Charcoal)">Inquire</a></div></div>
       </div>
       <div class="acq reveal" style="--d:.1s">
-        <img src="assets/artworks/Pencil/artwork_040.jpg" alt="Crimson — colour pencil" loading="lazy">
+        <img src="assets/thumbs/Pencil/artwork_040.jpg" alt="Crimson — colour pencil" loading="lazy">
         <div class="body"><h3>Crimson</h3><div class="meta">Colour pencil · portrait study</div>
         <p>A monochrome profile study in crimson — one of the portrait works from the ongoing sketchbook series.</p>
         <div class="row"><span class="price">Price on request</span><a class="btn btn-ghost" href="mailto:jagansartfolio@gmail.com?subject=Inquiry%20%E2%80%94%20%22Crimson%22%20(Colour%20pencil)">Inquire</a></div></div>
       </div>
       <div class="acq reveal" style="--d:.16s">
-        <img src="assets/artworks/Oil/artwork_003.jpg" alt="Hope is wax becoming light — oil" loading="lazy">
+        <img src="assets/thumbs/Oil/artwork_003.jpg" alt="Hope is wax becoming light — oil" loading="lazy">
         <div class="body"><h3>Hope is wax becoming light</h3><div class="meta">Oil on canvas</div>
         <p>An early oil study — quiet, luminous, and a favourite in the studio. Inquire for availability and editions.</p>
         <div class="row"><span class="price">Price on request</span><a class="btn btn-ghost" href="mailto:jagansartfolio@gmail.com?subject=Inquiry%20%E2%80%94%20%22Hope%20is%20wax%20becoming%20light%22%20(Oil)">Inquire</a></div></div>
@@ -537,6 +556,16 @@ body.js .reveal.in{opacity:1;transform:none}
     setTimeout(hidePreloader, 2600); /* safety */
   }
 
+  /* hydrate deferred hero slides once the page is up (smooth crossfade, light first paint) */
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      document.querySelectorAll('.hero-slide[data-src]').forEach(function(img){
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+      });
+    }, 350);
+  });
+
   /* nav */
   var nav = document.getElementById('nav');
   function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 24); }
@@ -567,7 +596,7 @@ body.js .reveal.in{opacity:1;transform:none}
   if('IntersectionObserver' in window){
     var cio = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if(e.isIntersecting){ runCounter(e.target); cio.unobserve(e.target); } });
-    }, {threshold:.6});
+    }, {threshold:.1});
     counters.forEach(function(el){ cio.observe(el); });
   } else counters.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
 
@@ -575,18 +604,18 @@ body.js .reveal.in{opacity:1;transform:none}
   var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   var preview = document.getElementById('preview'), previewImg = preview ? preview.querySelector('img') : null;
   var PREVIEWS = {
-    'gallery.html?medium=Pencil':'assets/artworks/Pencil/artwork_002.jpg',
-    'gallery.html?medium=Other':'assets/artworks/Other/artwork_011.jpg',
-    'gallery.html?medium=Digital':'assets/artworks/Digital/artwork_047.jpg',
-    'gallery.html?medium=Charcoal':'assets/artworks/Charcoal/artwork_007.jpg',
-    'gallery.html?medium=Watercolor':'assets/artworks/Watercolor/artwork_114.jpg',
-    'gallery.html?medium=Acrylic':'assets/artworks/Acrylic/artwork_001.jpg',
-    'gallery.html?medium=Oil':'assets/artworks/Oil/artwork_003.jpg',
-    'gallery.html?medium=Pen':'assets/artworks/Pen/artwork_024.jpg',
-    'gallery.html?medium=Ink':'assets/artworks/Ink/artwork_046.jpg',
-    'gallery.html?medium=Photography':'assets/artworks/Photography/artwork_044.jpg',
-    'gallery.html?medium=Mixed%20Media':'assets/artworks/Mixed%20Media/artwork_111.jpg',
-    'gallery.html?medium=Pastel':'assets/artworks/Pastel/artwork_076.jpg'
+    'gallery.html?medium=Pencil':'assets/thumbs/Pencil/artwork_002.jpg',
+    'gallery.html?medium=Other':'assets/thumbs/Other/artwork_011.jpg',
+    'gallery.html?medium=Digital':'assets/thumbs/Digital/artwork_047.jpg',
+    'gallery.html?medium=Charcoal':'assets/thumbs/Charcoal/artwork_007.jpg',
+    'gallery.html?medium=Watercolor':'assets/thumbs/Watercolor/artwork_114.jpg',
+    'gallery.html?medium=Acrylic':'assets/thumbs/Acrylic/artwork_001.jpg',
+    'gallery.html?medium=Oil':'assets/thumbs/Oil/artwork_003.jpg',
+    'gallery.html?medium=Pen':'assets/thumbs/Pen/artwork_024.jpg',
+    'gallery.html?medium=Ink':'assets/thumbs/Ink/artwork_046.jpg',
+    'gallery.html?medium=Photography':'assets/thumbs/Photography/artwork_044.jpg',
+    'gallery.html?medium=Mixed%20Media':'assets/thumbs/Mixed%20Media/artwork_111.jpg',
+    'gallery.html?medium=Pastel':'assets/thumbs/Pastel/artwork_076.jpg'
   };
   if(fine && preview){
     var px=0, py=0, tx=0, ty=0, raf=null;
@@ -599,6 +628,32 @@ body.js .reveal.in{opacity:1;transform:none}
     });
   }
 })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jagan S",
+  "alternateName": "JagansArtfolio",
+  "jobTitle": "Artist",
+  "description": "Self-taught realism artist working in graphite, charcoal, oil, acrylic, watercolour, pastel, digital and mixed media — portraits, wildlife and nature.",
+  "url": "https://jagansartfolio.com/",
+  "image": "https://jagansartfolio.com/assets/og-image.jpg",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
+  "sameAs": ["https://instagram.com/jagans_artfolio"],
+  "email": "jagansartfolio@gmail.com",
+  "knowsAbout": ["Portrait drawing", "Charcoal drawing", "Oil painting", "Watercolour", "Digital art", "Wildlife art"],
+  "makesOffer": { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commissioned artwork — portraits, wildlife and custom pieces, shipped worldwide" } }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "JagansArtfolio",
+  "url": "https://jagansartfolio.com/",
+  "inLanguage": "en"
+}
 </script>
 </body>
 </html>
