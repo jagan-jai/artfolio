@@ -76,12 +76,12 @@ a{color:inherit;text-decoration:none}
 .gitem{position:relative;overflow:hidden;background:var(--bg3);cursor:pointer;border-radius:2px}
 .gitem img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .8s var(--ease)}
 .gitem:hover img{transform:scale(1.05)}
-.gitem .ov{position:absolute;inset:auto 0 0 0;padding:18px 16px 14px;background:linear-gradient(transparent,rgba(10,9,8,.92));opacity:0;transform:translateY(10px);transition:.4s var(--ease)}
+.gitem .ov{position:absolute;inset:auto 0 0 0;padding:18px 16px 14px;background:linear-gradient(transparent,rgba(10,9,8,.62) 32%,rgba(10,9,8,.94));opacity:0;transform:translateY(10px);transition:.4s var(--ease)}
 .gitem:hover .ov{opacity:1;transform:none}
 body.touch .gitem .ov{opacity:1;transform:none;padding:12px 11px 10px}
 body.touch .gitem .ov h3{font-size:14px}
-.gitem .ov h3{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.25}
-.gitem .ov p{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-top:6px}
+.gitem .ov h3{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.25;text-shadow:0 1px 12px rgba(8,7,6,.9)}
+.gitem .ov p{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-top:6px;text-shadow:0 1px 10px rgba(8,7,6,.9)}
 .empty-note{padding:70px 0;text-align:center;color:var(--text3);font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
 
 /* lightbox */
